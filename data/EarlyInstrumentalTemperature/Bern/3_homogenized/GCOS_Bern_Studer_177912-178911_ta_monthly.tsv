@@ -1,0 +1,129 @@
+SEF	1.0.0
+ID	Bern_Studer
+Name	Bern
+Lat	46.947933
+Lon	7.439289
+Alt	540
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Studer|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1779	12	NA	NA	NA	month	NA	
+1780	1	NA	NA	NA	month	-5.2	
+1780	2	NA	NA	NA	month	-3.6	
+1780	3	NA	NA	NA	month	6.6	
+1780	4	NA	NA	NA	month	6.5	
+1780	5	NA	NA	NA	month	14.4	
+1780	6	NA	NA	NA	month	16.7	
+1780	7	NA	NA	NA	month	18	
+1780	8	NA	NA	NA	month	18.1	
+1780	9	NA	NA	NA	month	14	
+1780	10	NA	NA	NA	month	9.3	
+1780	11	NA	NA	NA	month	2	
+1780	12	NA	NA	NA	month	-2.6	
+1781	1	NA	NA	NA	month	-1.2	
+1781	2	NA	NA	NA	month	1.4	
+1781	3	NA	NA	NA	month	5.6	
+1781	4	NA	NA	NA	month	10	
+1781	5	NA	NA	NA	month	NA	
+1781	6	NA	NA	NA	month	17.7	
+1781	7	NA	NA	NA	month	19	
+1781	9	NA	NA	NA	month	NA	
+1781	10	NA	NA	NA	month	7.7	
+1781	11	NA	NA	NA	month	NA	
+1781	12	NA	NA	NA	month	1.4	
+1782	1	NA	NA	NA	month	0.3	
+1782	2	NA	NA	NA	month	-5.2	
+1782	3	NA	NA	NA	month	2.9	
+1782	4	NA	NA	NA	month	7.4	
+1782	5	NA	NA	NA	month	11.3	
+1782	6	NA	NA	NA	month	17.1	
+1782	7	NA	NA	NA	month	19.4	
+1782	8	NA	NA	NA	month	16.6	
+1782	9	NA	NA	NA	month	12.7	
+1782	10	NA	NA	NA	month	NA	
+1782	11	NA	NA	NA	month	NA	
+1782	12	NA	NA	NA	month	-3.7	
+1783	1	NA	NA	NA	month	1.5	
+1783	2	NA	NA	NA	month	1.5	
+1783	3	NA	NA	NA	month	2.2	
+1783	4	NA	NA	NA	month	8.4	
+1783	5	NA	NA	NA	month	14.2	
+1783	6	NA	NA	NA	month	15.9	
+1783	7	NA	NA	NA	month	NA	
+1783	8	NA	NA	NA	month	17.6	
+1783	9	NA	NA	NA	month	14.1	
+1783	10	NA	NA	NA	month	9.3	
+1783	11	NA	NA	NA	month	3	
+1783	12	NA	NA	NA	month	-1.1	
+1784	2	NA	NA	NA	month	-3	
+1784	3	NA	NA	NA	month	2.3	
+1784	4	NA	NA	NA	month	6	
+1784	5	NA	NA	NA	month	NA	
+1784	8	NA	NA	NA	month	NA	
+1784	9	NA	NA	NA	month	16.6	
+1784	10	NA	NA	NA	month	4.8	
+1784	11	NA	NA	NA	month	2.4	
+1784	12	NA	NA	NA	month	-4.1	
+1785	1	NA	NA	NA	month	-1.9	
+1785	2	NA	NA	NA	month	-3	
+1785	3	NA	NA	NA	month	-4.3	
+1785	4	NA	NA	NA	month	4.6	
+1785	5	NA	NA	NA	month	12.9	
+1785	6	NA	NA	NA	month	15.6	
+1785	7	NA	NA	NA	month	NA	
+1785	8	NA	NA	NA	month	NA	
+1785	9	NA	NA	NA	month	15.3	
+1785	10	NA	NA	NA	month	8.4	
+1785	11	NA	NA	NA	month	2.3	
+1785	12	NA	NA	NA	month	-1	
+1786	1	NA	NA	NA	month	-2.5	
+1786	2	NA	NA	NA	month	0.3	
+1786	3	NA	NA	NA	month	0.7	
+1786	4	NA	NA	NA	month	8.9	
+1786	5	NA	NA	NA	month	12.3	
+1786	6	NA	NA	NA	month	NA	
+1786	7	NA	NA	NA	month	15.2	
+1786	8	NA	NA	NA	month	15.5	
+1786	9	NA	NA	NA	month	NA	
+1786	10	NA	NA	NA	month	4.9	
+1786	11	NA	NA	NA	month	1.2	
+1786	12	NA	NA	NA	month	-0.7	
+1787	1	NA	NA	NA	month	-4.1	
+1787	2	NA	NA	NA	month	-0.3	
+1787	3	NA	NA	NA	month	5.3	
+1787	4	NA	NA	NA	month	7.5	
+1787	5	NA	NA	NA	month	9.8	
+1787	6	NA	NA	NA	month	16	
+1787	7	NA	NA	NA	month	16.6	
+1787	8	NA	NA	NA	month	NA	
+1787	9	NA	NA	NA	month	NA	
+1787	10	NA	NA	NA	month	10.3	
+1787	11	NA	NA	NA	month	3.8	
+1787	12	NA	NA	NA	month	1.5	
+1788	1	NA	NA	NA	month	-1.2	
+1788	2	NA	NA	NA	month	1.8	
+1788	3	NA	NA	NA	month	5.4	
+1788	4	NA	NA	NA	month	8.7	
+1788	5	NA	NA	NA	month	NA	
+1788	6	NA	NA	NA	month	16.9	
+1788	7	NA	NA	NA	month	NA	
+1788	8	NA	NA	NA	month	NA	
+1788	9	NA	NA	NA	month	NA	
+1788	10	NA	NA	NA	month	6.8	
+1788	11	NA	NA	NA	month	-0.8	
+1788	12	NA	NA	NA	month	-8.6	
+1789	1	NA	NA	NA	month	-3	
+1789	2	NA	NA	NA	month	1.5	
+1789	3	NA	NA	NA	month	0	
+1789	4	NA	NA	NA	month	8.6	
+1789	5	NA	NA	NA	month	14.1	
+1789	6	NA	NA	NA	month	13.3	
+1789	7	NA	NA	NA	month	16.2	
+1789	8	NA	NA	NA	month	16.3	
+1789	9	NA	NA	NA	month	12.8	
+1789	10	NA	NA	NA	month	7.3	
+1789	11	NA	NA	NA	month	1.2	

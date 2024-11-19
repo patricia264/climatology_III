@@ -1,0 +1,30 @@
+SEF	1.0.0
+ID	Basel_Kaufmann
+Name	Basel
+Lat	47.5576
+Lon	7.59025
+Alt	260
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Kaufmann|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1862	6	NA	NA	NA	month	16.4	
+1862	7	NA	NA	NA	month	19	
+1862	8	NA	NA	NA	month	17.9	
+1862	9	NA	NA	NA	month	15.6	
+1862	10	NA	NA	NA	month	11.9	
+1862	11	NA	NA	NA	month	5	
+1862	12	NA	NA	NA	month	2.4	
+1863	1	NA	NA	NA	month	3.1	
+1863	2	NA	NA	NA	month	3	
+1863	3	NA	NA	NA	month	5.7	
+1863	4	NA	NA	NA	month	11	
+1863	5	NA	NA	NA	month	14.9	
+1863	6	NA	NA	NA	month	17.6	
+1863	7	NA	NA	NA	month	19.4	
+1863	8	NA	NA	NA	month	20.4	
+1863	9	NA	NA	NA	month	14.5	
+1863	10	NA	NA	NA	month	NA	

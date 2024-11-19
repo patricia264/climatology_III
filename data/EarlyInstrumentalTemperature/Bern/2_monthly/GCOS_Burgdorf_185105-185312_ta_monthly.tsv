@@ -1,0 +1,45 @@
+SEF	1.0.0
+ID	Burgdorf
+Name	Burgdorf
+Lat	47.05686
+Lon	7.62793
+Alt	538
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Fankhauser|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1851	5	NA	NA	NA	month	9.1	
+1851	6	NA	NA	NA	month	16	
+1851	7	NA	NA	NA	month	16.4	
+1851	8	NA	NA	NA	month	16.3	
+1851	9	NA	NA	NA	month	10.1	
+1851	10	NA	NA	NA	month	8.7	
+1851	11	NA	NA	NA	month	-1	
+1851	12	NA	NA	NA	month	-5.9	
+1852	1	NA	NA	NA	month	-1.1	
+1852	2	NA	NA	NA	month	1	
+1852	3	NA	NA	NA	month	0.2	
+1852	4	NA	NA	NA	month	6	
+1852	5	NA	NA	NA	month	12.3	
+1852	6	NA	NA	NA	month	15.3	
+1852	7	NA	NA	NA	month	18.7	
+1852	8	NA	NA	NA	month	16.2	
+1852	9	NA	NA	NA	month	12.8	
+1852	10	NA	NA	NA	month	8	
+1852	11	NA	NA	NA	month	6.6	
+1852	12	NA	NA	NA	month	1.9	
+1853	1	NA	NA	NA	month	0.7	
+1853	2	NA	NA	NA	month	-1.9	
+1853	3	NA	NA	NA	month	-0.6	
+1853	4	NA	NA	NA	month	6.1	
+1853	5	NA	NA	NA	month	11.2	
+1853	6	NA	NA	NA	month	15.5	
+1853	7	NA	NA	NA	month	17.8	
+1853	8	NA	NA	NA	month	17.9	
+1853	9	NA	NA	NA	month	13.1	
+1853	10	NA	NA	NA	month	9	
+1853	11	NA	NA	NA	month	4.6	
+1853	12	NA	NA	NA	month	-4.1	

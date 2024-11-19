@@ -1,0 +1,18 @@
+SEF	1.0.0
+ID	Basel_Zwinger
+Name	Basel
+Lat	47.558
+Lon	7.588
+Alt	NA
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Zwinger
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1755	1	NA	NA	NA	month	-4.8	
+1755	2	NA	NA	NA	month	-1.9	
+1755	3	NA	NA	NA	month	4.5	
+1755	4	NA	NA	NA	month	13.7	
+1755	5	NA	NA	NA	month	11.6	

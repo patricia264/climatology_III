@@ -1,0 +1,74 @@
+SEF	1.0.0
+ID	Zurich_Meyer
+Name	Zürich
+Lat	47.37396
+Lon	8.5451
+Alt	415
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Meyer|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1759	6	NA	NA	NA	month	21.7	
+1759	7	NA	NA	NA	month	25.5	
+1759	8	NA	NA	NA	month	20.7	
+1759	9	NA	NA	NA	month	18.2	
+1759	10	NA	NA	NA	month	12.3	
+1759	11	NA	NA	NA	month	3.3	
+1759	12	NA	NA	NA	month	1.7	
+1760	1	NA	NA	NA	month	2	
+1760	2	NA	NA	NA	month	4.3	
+1760	3	NA	NA	NA	month	5.3	
+1760	4	NA	NA	NA	month	17.5	
+1760	5	NA	NA	NA	month	17.8	
+1760	6	NA	NA	NA	month	20.8	
+1760	7	NA	NA	NA	month	20.6	
+1760	8	NA	NA	NA	month	19.5	
+1760	9	NA	NA	NA	month	17.6	
+1760	10	NA	NA	NA	month	11.8	
+1760	11	NA	NA	NA	month	7.5	
+1760	12	NA	NA	NA	month	5.9	
+1761	1	NA	NA	NA	month	-0.5	
+1761	2	NA	NA	NA	month	5.7	
+1761	3	NA	NA	NA	month	8.8	
+1761	4	NA	NA	NA	month	11	
+1761	5	NA	NA	NA	month	16.9	
+1761	6	NA	NA	NA	month	18.3	
+1761	7	NA	NA	NA	month	19.1	
+1761	8	NA	NA	NA	month	19.5	
+1761	9	NA	NA	NA	month	16	
+1761	10	NA	NA	NA	month	8.8	
+1761	11	NA	NA	NA	month	4.5	
+1761	12	NA	NA	NA	month	-2.8	
+1762	1	NA	NA	NA	month	1.8	
+1762	2	NA	NA	NA	month	1.9	
+1762	3	NA	NA	NA	month	2.7	
+1762	4	NA	NA	NA	month	12.4	
+1762	5	NA	NA	NA	month	15.7	
+1762	6	NA	NA	NA	month	17.1	
+1762	7	NA	NA	NA	month	20.1	
+1762	8	NA	NA	NA	month	17.7	
+1762	9	NA	NA	NA	month	14	
+1762	10	NA	NA	NA	month	8.3	
+1762	11	NA	NA	NA	month	4	
+1762	12	NA	NA	NA	month	-2.7	
+1763	7	NA	NA	NA	month	20	
+1763	8	NA	NA	NA	month	21.1	
+1763	9	NA	NA	NA	month	15	
+1763	10	NA	NA	NA	month	9.6	
+1763	11	NA	NA	NA	month	5.5	
+1763	12	NA	NA	NA	month	5.4	
+1764	1	NA	NA	NA	month	6.1	
+1764	2	NA	NA	NA	month	6.3	
+1764	3	NA	NA	NA	month	4.2	
+1764	4	NA	NA	NA	month	9.7	
+1764	5	NA	NA	NA	month	16.5	
+1764	6	NA	NA	NA	month	18.8	
+1764	7	NA	NA	NA	month	20.5	
+1764	8	NA	NA	NA	month	17.5	
+1764	9	NA	NA	NA	month	14.5	
+1764	10	NA	NA	NA	month	9.5	
+1764	11	NA	NA	NA	month	6.3	
+1764	12	NA	NA	NA	month	3.6	

@@ -1,0 +1,35 @@
+SEF	1.0.0
+ID	Bern_Studer
+Name	Bern
+Lat	46.947933
+Lon	7.439289
+Alt	540
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Studer|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1801	11	NA	NA	NA	month	NA	
+1801	12	NA	NA	NA	month	2.3	
+1802	1	NA	NA	NA	month	-4.2	
+1802	2	NA	NA	NA	month	2	
+1802	3	NA	NA	NA	month	5	
+1802	4	NA	NA	NA	month	10.2	
+1802	5	NA	NA	NA	month	14.3	
+1802	6	NA	NA	NA	month	18.9	
+1802	7	NA	NA	NA	month	NA	
+1802	10	NA	NA	NA	month	11.9	
+1802	11	NA	NA	NA	month	5.2	
+1802	12	NA	NA	NA	month	1.6	
+1803	1	NA	NA	NA	month	-1.1	
+1803	2	NA	NA	NA	month	-0.9	
+1803	3	NA	NA	NA	month	4.7	
+1803	4	NA	NA	NA	month	11.6	
+1803	5	NA	NA	NA	month	12.1	
+1803	6	NA	NA	NA	month	17.5	
+1803	7	NA	NA	NA	month	20.1	
+1803	8	NA	NA	NA	month	20.1	
+1803	9	NA	NA	NA	month	13.1	
+1803	10	NA	NA	NA	month	NA	

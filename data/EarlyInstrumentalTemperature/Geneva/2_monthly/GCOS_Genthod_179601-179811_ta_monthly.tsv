@@ -1,0 +1,47 @@
+SEF	1.0.0
+ID	Genthod
+Name	Genthod
+Lat	46.2644
+Lon	6.158
+Alt	405
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Maurice | Address=Maison Bonnet
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1796	1	NA	NA	NA	month	2.5	
+1796	2	NA	NA	NA	month	2.2	
+1796	3	NA	NA	NA	month	2.5	
+1796	4	NA	NA	NA	month	9.4	
+1796	5	NA	NA	NA	month	13	
+1796	6	NA	NA	NA	month	16	
+1796	7	NA	NA	NA	month	17.3	
+1796	8	NA	NA	NA	month	18.4	
+1796	9	NA	NA	NA	month	15.8	
+1796	10	NA	NA	NA	month	9.9	
+1796	11	NA	NA	NA	month	4.5	
+1796	12	NA	NA	NA	month	-0.5	
+1797	1	NA	NA	NA	month	0.4	
+1797	2	NA	NA	NA	month	1.1	
+1797	3	NA	NA	NA	month	4.2	
+1797	4	NA	NA	NA	month	10.4	
+1797	5	NA	NA	NA	month	15	
+1797	6	NA	NA	NA	month	13.8	
+1797	7	NA	NA	NA	month	20.2	
+1797	8	NA	NA	NA	month	19.2	
+1797	9	NA	NA	NA	month	14.3	
+1797	10	NA	NA	NA	month	9.4	
+1797	11	NA	NA	NA	month	5.7	
+1797	12	NA	NA	NA	month	3.3	
+1798	1	NA	NA	NA	month	0.8	
+1798	2	NA	NA	NA	month	1.7	
+1798	3	NA	NA	NA	month	4.9	
+1798	4	NA	NA	NA	month	10.6	
+1798	5	NA	NA	NA	month	13.8	
+1798	6	NA	NA	NA	month	17	
+1798	7	NA	NA	NA	month	17.8	
+1798	9	NA	NA	NA	month	15.1	
+1798	10	NA	NA	NA	month	9.6	
+1798	11	NA	NA	NA	month	5	

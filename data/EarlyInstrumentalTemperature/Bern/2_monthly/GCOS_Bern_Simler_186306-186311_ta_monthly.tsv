@@ -1,0 +1,19 @@
+SEF	1.0.0
+ID	Bern_Simler
+Name	Bern
+Lat	46.951229
+Lon	7.439075
+Alt	574
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Simler (Sternwarte)
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1863	6	NA	NA	NA	month	16.2	
+1863	7	NA	NA	NA	month	18.9	
+1863	8	NA	NA	NA	month	20.4	
+1863	9	NA	NA	NA	month	14	
+1863	10	NA	NA	NA	month	10.9	
+1863	11	NA	NA	NA	month	3.6	

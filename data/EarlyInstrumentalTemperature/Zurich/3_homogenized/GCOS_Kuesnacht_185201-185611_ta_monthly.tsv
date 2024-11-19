@@ -1,0 +1,72 @@
+SEF	1.0.0
+ID	Kuesnacht
+Name	Küsnacht
+Lat	47.31701
+Lon	8.58323
+Alt	420
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Zollinger,others|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1852	1	NA	NA	NA	month	NA	
+1852	2	NA	NA	NA	month	1.5	
+1852	3	NA	NA	NA	month	0.6	
+1852	4	NA	NA	NA	month	6.2	
+1852	5	NA	NA	NA	month	13.6	
+1852	6	NA	NA	NA	month	15.7	
+1852	7	NA	NA	NA	month	18.9	
+1852	8	NA	NA	NA	month	16.7	
+1852	9	NA	NA	NA	month	14.2	
+1852	10	NA	NA	NA	month	9	
+1852	11	NA	NA	NA	month	8.5	
+1852	12	NA	NA	NA	month	2.9	
+1853	1	NA	NA	NA	month	1.7	
+1853	2	NA	NA	NA	month	-0.9	
+1853	3	NA	NA	NA	month	0.3	
+1853	4	NA	NA	NA	month	7	
+1853	5	NA	NA	NA	month	12.4	
+1853	6	NA	NA	NA	month	15.8	
+1853	7	NA	NA	NA	month	18.8	
+1853	8	NA	NA	NA	month	18.2	
+1853	9	NA	NA	NA	month	13.5	
+1853	10	NA	NA	NA	month	9.3	
+1853	11	NA	NA	NA	month	4.8	
+1853	12	NA	NA	NA	month	-4.1	
+1854	1	NA	NA	NA	month	-0.9	
+1854	2	NA	NA	NA	month	-1	
+1854	3	NA	NA	NA	month	3.5	
+1854	4	NA	NA	NA	month	8.4	
+1854	5	NA	NA	NA	month	12.9	
+1854	6	NA	NA	NA	month	14.6	
+1854	7	NA	NA	NA	month	18.7	
+1854	8	NA	NA	NA	month	17.5	
+1854	9	NA	NA	NA	month	15.8	
+1854	10	NA	NA	NA	month	9.6	
+1854	11	NA	NA	NA	month	2.5	
+1854	12	NA	NA	NA	month	1.4	
+1855	1	NA	NA	NA	month	-3.9	
+1855	2	NA	NA	NA	month	-0.4	
+1855	3	NA	NA	NA	month	3.1	
+1855	4	NA	NA	NA	month	7.3	
+1855	5	NA	NA	NA	month	11.7	
+1855	6	NA	NA	NA	month	16.7	
+1855	7	NA	NA	NA	month	17.6	
+1855	8	NA	NA	NA	month	17.6	
+1855	9	NA	NA	NA	month	NA	
+1855	10	NA	NA	NA	month	10.7	
+1855	11	NA	NA	NA	month	2.5	
+1855	12	NA	NA	NA	month	NA	
+1856	1	NA	NA	NA	month	1.6	
+1856	2	NA	NA	NA	month	NA	
+1856	3	NA	NA	NA	month	4	
+1856	4	NA	NA	NA	month	10.4	
+1856	5	NA	NA	NA	month	NA	
+1856	6	NA	NA	NA	month	17.4	
+1856	7	NA	NA	NA	month	17.5	
+1856	8	NA	NA	NA	month	18.3	
+1856	9	NA	NA	NA	month	NA	
+1856	10	NA	NA	NA	month	NA	
+1856	11	NA	NA	NA	month	NA	

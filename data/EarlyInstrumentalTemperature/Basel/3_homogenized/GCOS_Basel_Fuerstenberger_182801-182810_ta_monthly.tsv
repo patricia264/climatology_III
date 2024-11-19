@@ -1,0 +1,23 @@
+SEF	1.0.0
+ID	Basel_Fuerstenberger
+Name	Basel
+Lat	47.55686
+Lon	7.59057
+Alt	270
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Fuerstenberger | Address=Schlüsselberg 13
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1828	1	NA	NA	NA	month	NA	
+1828	2	NA	NA	NA	month	2.9	
+1828	3	NA	NA	NA	month	6.1	
+1828	4	NA	NA	NA	month	10.4	
+1828	5	NA	NA	NA	month	NA	
+1828	6	NA	NA	NA	month	NA	
+1828	7	NA	NA	NA	month	NA	
+1828	8	NA	NA	NA	month	16.8	
+1828	9	NA	NA	NA	month	15	
+1828	10	NA	NA	NA	month	NA	

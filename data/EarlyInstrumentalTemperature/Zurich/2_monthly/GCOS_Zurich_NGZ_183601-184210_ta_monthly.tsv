@@ -1,0 +1,95 @@
+SEF	1.0.0
+ID	Zurich_NGZ
+Name	Zürich
+Lat	47.37063
+Lon	8.54664
+Alt	435
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Ulrich, Hofmeister|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1836	1	NA	NA	NA	month	-1.3	
+1836	2	NA	NA	NA	month	0.5	
+1836	3	NA	NA	NA	month	7.2	
+1836	4	NA	NA	NA	month	8.2	
+1836	5	NA	NA	NA	month	11.8	
+1836	6	NA	NA	NA	month	17.5	
+1836	7	NA	NA	NA	month	19.7	
+1836	8	NA	NA	NA	month	18.9	
+1836	9	NA	NA	NA	month	13.4	
+1836	10	NA	NA	NA	month	9.5	
+1836	11	NA	NA	NA	month	4.7	
+1836	12	NA	NA	NA	month	2.4	
+1837	1	NA	NA	NA	month	-0.5	
+1837	2	NA	NA	NA	month	1.1	
+1837	3	NA	NA	NA	month	1.3	
+1837	4	NA	NA	NA	month	6.7	
+1837	5	NA	NA	NA	month	11	
+1837	6	NA	NA	NA	month	19.2	
+1837	7	NA	NA	NA	month	19.3	
+1837	8	NA	NA	NA	month	21.1	
+1837	9	NA	NA	NA	month	12.9	
+1837	10	NA	NA	NA	month	9.8	
+1837	11	NA	NA	NA	month	4	
+1837	12	NA	NA	NA	month	1.8	
+1838	1	NA	NA	NA	month	-5	
+1838	2	NA	NA	NA	month	0.3	
+1838	3	NA	NA	NA	month	5.1	
+1838	4	NA	NA	NA	month	6.5	
+1838	5	NA	NA	NA	month	14.3	
+1838	6	NA	NA	NA	month	17.3	
+1838	7	NA	NA	NA	month	19	
+1838	8	NA	NA	NA	month	17.3	
+1838	9	NA	NA	NA	month	15.2	
+1838	10	NA	NA	NA	month	10	
+1838	11	NA	NA	NA	month	6.1	
+1838	12	NA	NA	NA	month	0.7	
+1839	1	NA	NA	NA	month	-0.1	
+1839	2	NA	NA	NA	month	1.9	
+1839	3	NA	NA	NA	month	3.8	
+1839	4	NA	NA	NA	month	6.6	
+1839	5	NA	NA	NA	month	13.2	
+1839	6	NA	NA	NA	month	20.2	
+1839	7	NA	NA	NA	month	17.7	
+1839	8	NA	NA	NA	month	16.8	
+1839	9	NA	NA	NA	month	15	
+1839	10	NA	NA	NA	month	11.8	
+1839	11	NA	NA	NA	month	6.7	
+1839	12	NA	NA	NA	month	4.3	
+1840	1	NA	NA	NA	month	1.8	
+1840	2	NA	NA	NA	month	0.8	
+1840	3	NA	NA	NA	month	1.2	
+1840	4	NA	NA	NA	month	11.4	
+1840	5	NA	NA	NA	month	14.5	
+1840	6	NA	NA	NA	month	17.6	
+1840	7	NA	NA	NA	month	17.1	
+1840	8	NA	NA	NA	month	18.8	
+1840	9	NA	NA	NA	month	15	
+1840	10	NA	NA	NA	month	7.7	
+1840	11	NA	NA	NA	month	6.8	
+1840	12	NA	NA	NA	month	-3.9	
+1841	1	NA	NA	NA	month	-0.4	
+1841	2	NA	NA	NA	month	0	
+1841	3	NA	NA	NA	month	6.7	
+1841	4	NA	NA	NA	month	9.7	
+1841	5	NA	NA	NA	month	17.9	
+1841	6	NA	NA	NA	month	15.8	
+1841	7	NA	NA	NA	month	17.3	
+1841	8	NA	NA	NA	month	17.5	
+1841	9	NA	NA	NA	month	16.1	
+1841	10	NA	NA	NA	month	11.4	
+1841	11	NA	NA	NA	month	5.6	
+1841	12	NA	NA	NA	month	4.1	
+1842	1	NA	NA	NA	month	-2.6	
+1842	2	NA	NA	NA	month	-2.1	
+1842	3	NA	NA	NA	month	5.7	
+1842	4	NA	NA	NA	month	9.3	
+1842	5	NA	NA	NA	month	15.2	
+1842	6	NA	NA	NA	month	19.9	
+1842	7	NA	NA	NA	month	19	
+1842	8	NA	NA	NA	month	20.6	
+1842	9	NA	NA	NA	month	14.2	
+1842	10	NA	NA	NA	month	6.9	

@@ -1,0 +1,109 @@
+SEF	1.0.0
+ID	Burgdorf
+Name	Burgdorf
+Lat	47.05686
+Lon	7.62793
+Alt	538
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Fankhauser|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1857	1	NA	NA	NA	month	-2.2	
+1857	2	NA	NA	NA	month	-1.7	
+1857	3	NA	NA	NA	month	3.2	
+1857	4	NA	NA	NA	month	6.8	
+1857	5	NA	NA	NA	month	13.2	
+1857	6	NA	NA	NA	month	16	
+1857	7	NA	NA	NA	month	19.5	
+1857	8	NA	NA	NA	month	18.5	
+1857	9	NA	NA	NA	month	15.7	
+1857	10	NA	NA	NA	month	10.5	
+1857	11	NA	NA	NA	month	3.4	
+1857	12	NA	NA	NA	month	-0.5	
+1858	1	NA	NA	NA	month	-4.7	
+1858	2	NA	NA	NA	month	-1.2	
+1858	3	NA	NA	NA	month	2.8	
+1858	4	NA	NA	NA	month	10.8	
+1858	5	NA	NA	NA	month	10.6	
+1858	6	NA	NA	NA	month	18.9	
+1858	7	NA	NA	NA	month	16.6	
+1858	8	NA	NA	NA	month	16.3	
+1858	9	NA	NA	NA	month	15.3	
+1858	10	NA	NA	NA	month	9.3	
+1858	11	NA	NA	NA	month	0.6	
+1858	12	NA	NA	NA	month	0.4	
+1859	1	NA	NA	NA	month	-2.7	
+1859	2	NA	NA	NA	month	0.4	
+1859	3	NA	NA	NA	month	5.4	
+1859	4	NA	NA	NA	month	8.7	
+1859	5	NA	NA	NA	month	12.9	
+1859	6	NA	NA	NA	month	17	
+1859	7	NA	NA	NA	month	21.6	
+1859	8	NA	NA	NA	month	19.9	
+1859	9	NA	NA	NA	month	14.1	
+1859	10	NA	NA	NA	month	10.1	
+1859	11	NA	NA	NA	month	2.7	
+1859	12	NA	NA	NA	month	-3.5	
+1860	1	NA	NA	NA	month	1.6	
+1860	2	NA	NA	NA	month	-3	
+1860	3	NA	NA	NA	month	1.6	
+1860	4	NA	NA	NA	month	6.8	
+1860	5	NA	NA	NA	month	14.3	
+1860	6	NA	NA	NA	month	16.1	
+1860	7	NA	NA	NA	month	16.4	
+1860	8	NA	NA	NA	month	15.5	
+1860	9	NA	NA	NA	month	13.1	
+1860	10	NA	NA	NA	month	8.3	
+1860	11	NA	NA	NA	month	1.8	
+1860	12	NA	NA	NA	month	0.4	
+1861	1	NA	NA	NA	month	-3.5	
+1861	2	NA	NA	NA	month	1.1	
+1861	3	NA	NA	NA	month	4.4	
+1861	4	NA	NA	NA	month	7.4	
+1861	5	NA	NA	NA	month	12.7	
+1861	6	NA	NA	NA	month	16.8	
+1861	7	NA	NA	NA	month	16.7	
+1861	8	NA	NA	NA	month	18.8	
+1861	9	NA	NA	NA	month	12.8	
+1861	10	NA	NA	NA	month	10.2	
+1861	11	NA	NA	NA	month	2.9	
+1861	12	NA	NA	NA	month	-2.5	
+1862	1	NA	NA	NA	month	-1.4	
+1862	2	NA	NA	NA	month	1.1	
+1862	3	NA	NA	NA	month	6.6	
+1862	4	NA	NA	NA	month	10.4	
+1862	5	NA	NA	NA	month	14.2	
+1862	6	NA	NA	NA	month	15.2	
+1862	7	NA	NA	NA	month	18.3	
+1862	8	NA	NA	NA	month	16.4	
+1862	9	NA	NA	NA	month	13.9	
+1862	10	NA	NA	NA	month	10.5	
+1862	11	NA	NA	NA	month	3.8	
+1862	12	NA	NA	NA	month	0.1	
+1863	1	NA	NA	NA	month	0.7	
+1863	2	NA	NA	NA	month	0.8	
+1863	3	NA	NA	NA	month	3.7	
+1863	4	NA	NA	NA	month	9.6	
+1863	5	NA	NA	NA	month	13.6	
+1863	6	NA	NA	NA	month	15.9	
+1863	7	NA	NA	NA	month	17.6	
+1863	8	NA	NA	NA	month	18.2	
+1863	9	NA	NA	NA	month	12.4	
+1863	10	NA	NA	NA	month	9.5	
+1863	11	NA	NA	NA	month	4.3	
+1863	12	NA	NA	NA	month	0.7	
+1864	1	NA	NA	NA	month	-7.6	
+1864	2	NA	NA	NA	month	-1.4	
+1864	3	NA	NA	NA	month	4.7	
+1864	4	NA	NA	NA	month	7.3	
+1864	5	NA	NA	NA	month	12.9	
+1864	6	NA	NA	NA	month	15.4	
+1864	7	NA	NA	NA	month	17.8	
+1864	8	NA	NA	NA	month	15.6	
+1864	9	NA	NA	NA	month	12.8	
+1864	10	NA	NA	NA	month	6.6	
+1864	11	NA	NA	NA	month	3.2	
+1864	12	NA	NA	NA	month	-3.7	

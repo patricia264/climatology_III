@@ -1,0 +1,66 @@
+SEF	1.0.0
+ID	Bern_Lombach
+Name	Bern
+Lat	46.946585
+Lon	7.441255
+Alt	540
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Lombach|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1785	6	NA	NA	NA	month	NA	
+1785	7	NA	NA	NA	month	16.8	
+1785	8	NA	NA	NA	month	15.7	
+1785	9	NA	NA	NA	month	15.2	
+1785	10	NA	NA	NA	month	8	
+1785	11	NA	NA	NA	month	2.8	
+1785	12	NA	NA	NA	month	-0.2	
+1786	1	NA	NA	NA	month	-1.1	
+1786	2	NA	NA	NA	month	0.9	
+1786	3	NA	NA	NA	month	1.5	
+1786	4	NA	NA	NA	month	9.6	
+1786	5	NA	NA	NA	month	12.5	
+1786	6	NA	NA	NA	month	17.5	
+1786	7	NA	NA	NA	month	16	
+1786	8	NA	NA	NA	month	15.7	
+1786	9	NA	NA	NA	month	12.3	
+1786	10	NA	NA	NA	month	5.8	
+1786	11	NA	NA	NA	month	1.9	
+1786	12	NA	NA	NA	month	-0.6	
+1787	1	NA	NA	NA	month	-3.8	
+1787	2	NA	NA	NA	month	0.2	
+1787	3	NA	NA	NA	month	5.6	
+1787	4	NA	NA	NA	month	7.6	
+1787	7	NA	NA	NA	month	16.8	
+1787	8	NA	NA	NA	month	17.8	
+1787	9	NA	NA	NA	month	13.8	
+1787	10	NA	NA	NA	month	9.8	
+1787	11	NA	NA	NA	month	3.5	
+1787	12	NA	NA	NA	month	2.6	
+1788	1	NA	NA	NA	month	-0.1	
+1788	2	NA	NA	NA	month	2.9	
+1788	3	NA	NA	NA	month	5.8	
+1788	4	NA	NA	NA	month	8.9	
+1788	5	NA	NA	NA	month	13.9	
+1788	6	NA	NA	NA	month	16.4	
+1788	7	NA	NA	NA	month	18.9	
+1788	8	NA	NA	NA	month	16.6	
+1788	9	NA	NA	NA	month	15.1	
+1788	10	NA	NA	NA	month	7.4	
+1788	11	NA	NA	NA	month	0.2	
+1788	12	NA	NA	NA	month	-7.4	
+1789	1	NA	NA	NA	month	-2.9	
+1789	2	NA	NA	NA	month	2.4	
+1789	3	NA	NA	NA	month	0.6	
+1789	4	NA	NA	NA	month	9.3	
+1789	5	NA	NA	NA	month	14.8	
+1789	6	NA	NA	NA	month	13.9	
+1789	7	NA	NA	NA	month	17.1	
+1789	8	NA	NA	NA	month	17	
+1789	9	NA	NA	NA	month	13.2	
+1789	10	NA	NA	NA	month	7.8	
+1789	11	NA	NA	NA	month	1.8	
+1789	12	NA	NA	NA	month	-0.9	

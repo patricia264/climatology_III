@@ -1,0 +1,34 @@
+SEF	1.0.0
+ID	Basel_Fuerstenberger
+Name	Basel
+Lat	47.56085
+Lon	7.58222
+Alt	270
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Fuerstenberger | Address=Hebelstrasse 22
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1826	4	NA	NA	NA	month	10.1	
+1826	5	NA	NA	NA	month	12.5	
+1826	6	NA	NA	NA	month	17.6	
+1826	7	NA	NA	NA	month	20.4	
+1826	8	NA	NA	NA	month	21	
+1826	9	NA	NA	NA	month	16.1	
+1826	10	NA	NA	NA	month	11.2	
+1826	11	NA	NA	NA	month	3.4	
+1826	12	NA	NA	NA	month	2	
+1827	1	NA	NA	NA	month	-0.8	
+1827	2	NA	NA	NA	month	-3.1	
+1827	3	NA	NA	NA	month	6.8	
+1827	4	NA	NA	NA	month	11.5	
+1827	5	NA	NA	NA	month	15.6	
+1827	6	NA	NA	NA	month	16.9	
+1827	7	NA	NA	NA	month	21	
+1827	8	NA	NA	NA	month	18	
+1827	9	NA	NA	NA	month	14.4	
+1827	10	NA	NA	NA	month	10.4	
+1827	11	NA	NA	NA	month	2.9	
+1827	12	NA	NA	NA	month	5.1	

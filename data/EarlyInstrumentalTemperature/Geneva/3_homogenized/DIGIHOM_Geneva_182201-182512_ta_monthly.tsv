@@ -1,0 +1,61 @@
+SEF	1.0.0
+ID	Geneva
+Name	Geneva
+Lat	46.20011
+Lon	6.14523
+Alt	380
+Source	DIGIHOM
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Address=Nouveau Jardin Botanique
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1822	1	NA	NA	NA	month	0.8	
+1822	2	NA	NA	NA	month	3.4	
+1822	3	NA	NA	NA	month	8.1	
+1822	4	NA	NA	NA	month	9.2	
+1822	5	NA	NA	NA	month	14.9	
+1822	6	NA	NA	NA	month	20.8	
+1822	7	NA	NA	NA	month	18.9	
+1822	8	NA	NA	NA	month	17.7	
+1822	9	NA	NA	NA	month	15.4	
+1822	10	NA	NA	NA	month	11.3	
+1822	11	NA	NA	NA	month	7.9	
+1822	12	NA	NA	NA	month	-0.3	
+1823	1	NA	NA	NA	month	-0.8	
+1823	2	NA	NA	NA	month	3.9	
+1823	3	NA	NA	NA	month	4.2	
+1823	4	NA	NA	NA	month	8	
+1823	5	NA	NA	NA	month	13.5	
+1823	6	NA	NA	NA	month	14.2	
+1823	7	NA	NA	NA	month	16.7	
+1823	8	NA	NA	NA	month	17.5	
+1823	9	NA	NA	NA	month	15	
+1823	10	NA	NA	NA	month	8	
+1823	11	NA	NA	NA	month	3.7	
+1823	12	NA	NA	NA	month	3.5	
+1824	1	NA	NA	NA	month	-0.4	
+1824	2	NA	NA	NA	month	1.8	
+1824	3	NA	NA	NA	month	2.3	
+1824	4	NA	NA	NA	month	6.1	
+1824	5	NA	NA	NA	month	11.6	
+1824	6	NA	NA	NA	month	13.8	
+1824	7	NA	NA	NA	month	18.8	
+1824	8	NA	NA	NA	month	16.9	
+1824	9	NA	NA	NA	month	14.1	
+1824	10	NA	NA	NA	month	8.6	
+1824	11	NA	NA	NA	month	6.1	
+1824	12	NA	NA	NA	month	3.7	
+1825	1	NA	NA	NA	month	0.4	
+1825	2	NA	NA	NA	month	1.5	
+1825	3	NA	NA	NA	month	3.5	
+1825	4	NA	NA	NA	month	10.6	
+1825	5	NA	NA	NA	month	12.6	
+1825	6	NA	NA	NA	month	16.5	
+1825	7	NA	NA	NA	month	18.1	
+1825	8	NA	NA	NA	month	18.4	
+1825	9	NA	NA	NA	month	16.6	
+1825	10	NA	NA	NA	month	10.8	
+1825	11	NA	NA	NA	month	6.7	
+1825	12	NA	NA	NA	month	5.6	

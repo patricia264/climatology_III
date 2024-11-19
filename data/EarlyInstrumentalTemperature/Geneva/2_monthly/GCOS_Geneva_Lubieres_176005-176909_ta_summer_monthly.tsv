@@ -1,0 +1,62 @@
+SEF	1.0.0
+ID	Geneva_Lubieres
+Name	Geneva
+Lat	46.221
+Lon	6.122
+Alt	445
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Lubières | Address=Petit-Saconnex|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1760	5	NA	NA	NA	month	NA	
+1760	6	NA	NA	NA	month	NA	
+1760	7	NA	NA	NA	month	NA	
+1760	8	NA	NA	NA	month	NA	
+1760	9	NA	NA	NA	month	NA	
+1761	5	NA	NA	NA	month	NA	
+1761	6	NA	NA	NA	month	19.5	
+1761	7	NA	NA	NA	month	23	
+1761	8	NA	NA	NA	month	21.8	
+1761	9	NA	NA	NA	month	18.4	
+1762	5	NA	NA	NA	month	17	
+1762	6	NA	NA	NA	month	NA	
+1762	7	NA	NA	NA	month	NA	
+1762	8	NA	NA	NA	month	20.7	
+1762	9	NA	NA	NA	month	15.4	
+1763	5	NA	NA	NA	month	NA	
+1763	6	NA	NA	NA	month	NA	
+1763	7	NA	NA	NA	month	NA	
+1763	8	NA	NA	NA	month	NA	
+1763	9	NA	NA	NA	month	NA	
+1764	5	NA	NA	NA	month	17.4	
+1764	6	NA	NA	NA	month	20.1	
+1764	7	NA	NA	NA	month	NA	
+1764	8	NA	NA	NA	month	NA	
+1764	9	NA	NA	NA	month	NA	
+1765	5	NA	NA	NA	month	14.1	
+1765	6	NA	NA	NA	month	NA	
+1765	7	NA	NA	NA	month	NA	
+1765	8	NA	NA	NA	month	NA	
+1765	9	NA	NA	NA	month	NA	
+1766	5	NA	NA	NA	month	15.1	
+1766	6	NA	NA	NA	month	NA	
+1766	7	NA	NA	NA	month	NA	
+1766	8	NA	NA	NA	month	21.4	
+1766	9	NA	NA	NA	month	NA	
+1767	5	NA	NA	NA	month	NA	
+1767	6	NA	NA	NA	month	NA	
+1767	8	NA	NA	NA	month	19.2	
+1767	9	NA	NA	NA	month	NA	
+1768	5	NA	NA	NA	month	13.9	
+1768	6	NA	NA	NA	month	15.8	
+1768	7	NA	NA	NA	month	19.9	
+1768	8	NA	NA	NA	month	20.1	
+1768	9	NA	NA	NA	month	14.7	
+1769	5	NA	NA	NA	month	14.4	
+1769	6	NA	NA	NA	month	16.4	
+1769	7	NA	NA	NA	month	19.9	
+1769	8	NA	NA	NA	month	NA	
+1769	9	NA	NA	NA	month	15.4	

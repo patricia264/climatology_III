@@ -1,0 +1,40 @@
+SEF	1.0.0
+ID	Basel_Burckhardt
+Name	Basel
+Lat	47.55777
+Lon	7.58828
+Alt	NA
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Burckhardt
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1825	9	NA	NA	NA	month	NA	
+1825	10	NA	NA	NA	month	8.4	
+1825	11	NA	NA	NA	month	6.6	
+1825	12	NA	NA	NA	month	4.6	
+1826	1	NA	NA	NA	month	-6	
+1826	2	NA	NA	NA	month	2.4	
+1826	3	NA	NA	NA	month	5.1	
+1826	4	NA	NA	NA	month	9.4	
+1826	5	NA	NA	NA	month	12.4	
+1826	6	NA	NA	NA	month	18.2	
+1826	7	NA	NA	NA	month	20	
+1826	8	NA	NA	NA	month	NA	
+1826	9	NA	NA	NA	month	NA	
+1826	10	NA	NA	NA	month	12.1	
+1826	11	NA	NA	NA	month	NA	
+1826	12	NA	NA	NA	month	2.7	
+1827	1	NA	NA	NA	month	-0.8	
+1827	2	NA	NA	NA	month	-2.4	
+1827	3	NA	NA	NA	month	6.2	
+1827	4	NA	NA	NA	month	10.9	
+1827	5	NA	NA	NA	month	NA	
+1827	6	NA	NA	NA	month	NA	
+1827	7	NA	NA	NA	month	NA	
+1827	8	NA	NA	NA	month	NA	
+1827	9	NA	NA	NA	month	NA	
+1827	10	NA	NA	NA	month	NA	
+1827	12	NA	NA	NA	month	NA	
