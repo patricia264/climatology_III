@@ -1,0 +1,70 @@
+SEF	1.0.0
+ID	Bern_Studer
+Name	Bern
+Lat	46.947933
+Lon	7.439289
+Alt	540
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Studer|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1797	1	NA	NA	NA	month	NA	
+1797	2	NA	NA	NA	month	-0.3	
+1797	3	NA	NA	NA	month	2.2	
+1797	4	NA	NA	NA	month	9.1	
+1797	5	NA	NA	NA	month	13.6	
+1797	6	NA	NA	NA	month	13.1	
+1797	7	NA	NA	NA	month	NA	
+1797	8	NA	NA	NA	month	17.4	
+1797	9	NA	NA	NA	month	13.4	
+1797	10	NA	NA	NA	month	8	
+1797	11	NA	NA	NA	month	4.2	
+1797	12	NA	NA	NA	month	2	
+1798	1	NA	NA	NA	month	-1.2	
+1798	2	NA	NA	NA	month	-0.4	
+1798	3	NA	NA	NA	month	3.1	
+1798	4	NA	NA	NA	month	8.9	
+1798	5	NA	NA	NA	month	13.5	
+1798	6	NA	NA	NA	month	16.4	
+1798	7	NA	NA	NA	month	17.2	
+1798	8	NA	NA	NA	month	16.8	
+1798	9	NA	NA	NA	month	13.5	
+1798	10	NA	NA	NA	month	8.3	
+1798	11	NA	NA	NA	month	3.6	
+1798	12	NA	NA	NA	month	-2.6	
+1799	1	NA	NA	NA	month	-6.3	
+1799	2	NA	NA	NA	month	1.4	
+1799	3	NA	NA	NA	month	2.8	
+1799	4	NA	NA	NA	month	5	
+1799	5	NA	NA	NA	month	11.1	
+1799	6	NA	NA	NA	month	14.3	
+1799	7	NA	NA	NA	month	16	
+1799	8	NA	NA	NA	month	16.8	
+1799	9	NA	NA	NA	month	13.2	
+1799	10	NA	NA	NA	month	8.2	
+1799	11	NA	NA	NA	month	2.5	
+1799	12	NA	NA	NA	month	-4.6	
+1800	1	NA	NA	NA	month	-0.3	
+1800	2	NA	NA	NA	month	-0.7	
+1800	3	NA	NA	NA	month	1.7	
+1800	4	NA	NA	NA	month	10.8	
+1800	5	NA	NA	NA	month	14.7	
+1800	6	NA	NA	NA	month	13.8	
+1800	7	NA	NA	NA	month	18.3	
+1800	8	NA	NA	NA	month	17.3	
+1800	9	NA	NA	NA	month	13.8	
+1800	10	NA	NA	NA	month	6.7	
+1800	11	NA	NA	NA	month	4.2	
+1801	1	NA	NA	NA	month	-0.1	
+1801	2	NA	NA	NA	month	0.5	
+1801	3	NA	NA	NA	month	3.8	
+1801	4	NA	NA	NA	month	7.9	
+1801	5	NA	NA	NA	month	12.2	
+1801	6	NA	NA	NA	month	13.6	
+1801	7	NA	NA	NA	month	NA	
+1801	8	NA	NA	NA	month	15.7	
+1801	10	NA	NA	NA	month	8.8	
+1801	11	NA	NA	NA	month	NA	

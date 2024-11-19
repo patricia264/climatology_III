@@ -1,0 +1,69 @@
+SEF	1.0.0
+ID	Basel_Schneider
+Name	Basel
+Lat	47.55594
+Lon	7.59196
+Alt	270
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Schneider|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1838	6	NA	NA	NA	month	17.6	
+1838	7	NA	NA	NA	month	NA	
+1838	8	NA	NA	NA	month	NA	
+1838	10	NA	NA	NA	month	NA	
+1838	12	NA	NA	NA	month	NA	
+1839	4	NA	NA	NA	month	NA	
+1839	6	NA	NA	NA	month	NA	
+1839	7	NA	NA	NA	month	NA	
+1839	8	NA	NA	NA	month	NA	
+1839	12	NA	NA	NA	month	NA	
+1840	1	NA	NA	NA	month	NA	
+1840	4	NA	NA	NA	month	NA	
+1840	5	NA	NA	NA	month	NA	
+1840	6	NA	NA	NA	month	NA	
+1840	7	NA	NA	NA	month	17.5	
+1840	8	NA	NA	NA	month	NA	
+1840	9	NA	NA	NA	month	NA	
+1840	10	NA	NA	NA	month	7.1	
+1841	7	NA	NA	NA	month	NA	
+1841	8	NA	NA	NA	month	NA	
+1841	9	NA	NA	NA	month	NA	
+1842	4	NA	NA	NA	month	NA	
+1842	5	NA	NA	NA	month	NA	
+1842	6	NA	NA	NA	month	NA	
+1842	7	NA	NA	NA	month	19.2	
+1842	8	NA	NA	NA	month	20.8	
+1842	9	NA	NA	NA	month	NA	
+1842	10	NA	NA	NA	month	NA	
+1843	4	NA	NA	NA	month	NA	
+1843	5	NA	NA	NA	month	NA	
+1843	6	NA	NA	NA	month	NA	
+1843	7	NA	NA	NA	month	NA	
+1843	8	NA	NA	NA	month	NA	
+1843	9	NA	NA	NA	month	NA	
+1843	10	NA	NA	NA	month	NA	
+1843	12	NA	NA	NA	month	NA	
+1844	4	NA	NA	NA	month	NA	
+1844	7	NA	NA	NA	month	NA	
+1844	8	NA	NA	NA	month	16.8	
+1844	9	NA	NA	NA	month	NA	
+1845	2	NA	NA	NA	month	NA	
+1845	3	NA	NA	NA	month	NA	
+1845	4	NA	NA	NA	month	NA	
+1845	5	NA	NA	NA	month	NA	
+1845	6	NA	NA	NA	month	NA	
+1845	7	NA	NA	NA	month	NA	
+1845	8	NA	NA	NA	month	NA	
+1845	9	NA	NA	NA	month	NA	
+1845	10	NA	NA	NA	month	NA	
+1845	12	NA	NA	NA	month	NA	
+1846	3	NA	NA	NA	month	NA	
+1846	5	NA	NA	NA	month	NA	
+1846	6	NA	NA	NA	month	NA	
+1846	7	NA	NA	NA	month	NA	
+1846	8	NA	NA	NA	month	19.1	
+1846	9	NA	NA	NA	month	NA	

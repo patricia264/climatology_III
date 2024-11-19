@@ -1,0 +1,135 @@
+SEF	1.0.0
+ID	Zurich_NGZ
+Name	Zürich
+Lat	47.37212
+Lon	8.55008
+Alt	442
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Unknown|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1842	11	NA	NA	NA	month	2.7	
+1842	12	NA	NA	NA	month	0.3	
+1843	1	NA	NA	NA	month	1	
+1843	2	NA	NA	NA	month	3.4	
+1843	3	NA	NA	NA	month	4.3	
+1843	4	NA	NA	NA	month	9.8	
+1843	5	NA	NA	NA	month	12.9	
+1843	6	NA	NA	NA	month	15.5	
+1843	7	NA	NA	NA	month	17.9	
+1843	8	NA	NA	NA	month	18.5	
+1843	9	NA	NA	NA	month	15.3	
+1843	10	NA	NA	NA	month	9	
+1843	11	NA	NA	NA	month	4.2	
+1843	12	NA	NA	NA	month	0.3	
+1844	1	NA	NA	NA	month	-2	
+1844	2	NA	NA	NA	month	-0.3	
+1844	3	NA	NA	NA	month	4	
+1844	4	NA	NA	NA	month	11.3	
+1844	5	NA	NA	NA	month	13.7	
+1844	6	NA	NA	NA	month	20.3	
+1844	7	NA	NA	NA	month	18.7	
+1844	8	NA	NA	NA	month	16.7	
+1844	9	NA	NA	NA	month	15.7	
+1844	10	NA	NA	NA	month	9.9	
+1844	11	NA	NA	NA	month	5.3	
+1844	12	NA	NA	NA	month	-2.4	
+1845	1	NA	NA	NA	month	-0.2	
+1845	2	NA	NA	NA	month	-3.3	
+1845	3	NA	NA	NA	month	1.4	
+1845	4	NA	NA	NA	month	10.4	
+1845	5	NA	NA	NA	month	12.3	
+1845	6	NA	NA	NA	month	19.3	
+1845	7	NA	NA	NA	month	20.3	
+1845	8	NA	NA	NA	month	16.4	
+1845	9	NA	NA	NA	month	15.2	
+1845	10	NA	NA	NA	month	10.1	
+1845	11	NA	NA	NA	month	5.8	
+1845	12	NA	NA	NA	month	3.3	
+1846	1	NA	NA	NA	month	-0.3	
+1846	2	NA	NA	NA	month	4.7	
+1846	3	NA	NA	NA	month	7	
+1846	4	NA	NA	NA	month	9.9	
+1846	5	NA	NA	NA	month	16.4	
+1846	6	NA	NA	NA	month	21.6	
+1846	7	NA	NA	NA	month	20.3	
+1846	8	NA	NA	NA	month	18.8	
+1846	9	NA	NA	NA	month	15.2	
+1846	10	NA	NA	NA	month	9.3	
+1846	11	NA	NA	NA	month	3.3	
+1846	12	NA	NA	NA	month	-3.5	
+1847	1	NA	NA	NA	month	-1	
+1847	2	NA	NA	NA	month	-0.9	
+1847	3	NA	NA	NA	month	3.8	
+1847	4	NA	NA	NA	month	6.8	
+1847	5	NA	NA	NA	month	17.1	
+1847	6	NA	NA	NA	month	16.3	
+1847	7	NA	NA	NA	month	21.1	
+1847	8	NA	NA	NA	month	19.6	
+1847	9	NA	NA	NA	month	13.6	
+1847	10	NA	NA	NA	month	9.9	
+1847	11	NA	NA	NA	month	4.7	
+1847	12	NA	NA	NA	month	-0.5	
+1848	1	NA	NA	NA	month	-4.9	
+1848	2	NA	NA	NA	month	2.9	
+1848	3	NA	NA	NA	month	6.1	
+1848	4	NA	NA	NA	month	11.7	
+1848	5	NA	NA	NA	month	16.1	
+1848	6	NA	NA	NA	month	18.9	
+1848	7	NA	NA	NA	month	20	
+1848	8	NA	NA	NA	month	19.5	
+1848	9	NA	NA	NA	month	15	
+1848	10	NA	NA	NA	month	10.5	
+1848	11	NA	NA	NA	month	3.5	
+1848	12	NA	NA	NA	month	0.9	
+1849	1	NA	NA	NA	month	1.8	
+1849	2	NA	NA	NA	month	3.7	
+1849	3	NA	NA	NA	month	4.1	
+1849	4	NA	NA	NA	month	8.3	
+1849	5	NA	NA	NA	month	15.3	
+1849	6	NA	NA	NA	month	19.9	
+1849	7	NA	NA	NA	month	20.1	
+1849	8	NA	NA	NA	month	17.5	
+1849	9	NA	NA	NA	month	16.3	
+1849	10	NA	NA	NA	month	10.9	
+1849	11	NA	NA	NA	month	2.2	
+1849	12	NA	NA	NA	month	-0.6	
+1850	1	NA	NA	NA	month	-2.5	
+1850	2	NA	NA	NA	month	5.7	
+1850	3	NA	NA	NA	month	3.4	
+1850	4	NA	NA	NA	month	9.6	
+1850	5	NA	NA	NA	month	12.8	
+1850	6	NA	NA	NA	month	19.9	
+1850	7	NA	NA	NA	month	19.4	
+1850	8	NA	NA	NA	month	17.8	
+1850	9	NA	NA	NA	month	13.9	
+1850	10	NA	NA	NA	month	7.6	
+1850	11	NA	NA	NA	month	6.8	
+1850	12	NA	NA	NA	month	1.3	
+1851	1	NA	NA	NA	month	1	
+1851	2	NA	NA	NA	month	1.8	
+1851	3	NA	NA	NA	month	4.8	
+1851	4	NA	NA	NA	month	10.9	
+1851	5	NA	NA	NA	month	11.1	
+1851	6	NA	NA	NA	month	19	
+1851	7	NA	NA	NA	month	19.1	
+1851	8	NA	NA	NA	month	18.1	
+1851	9	NA	NA	NA	month	12	
+1851	10	NA	NA	NA	month	10	
+1851	11	NA	NA	NA	month	0.5	
+1851	12	NA	NA	NA	month	-3.1	
+1852	1	NA	NA	NA	month	1.1	
+1852	2	NA	NA	NA	month	2.6	
+1852	3	NA	NA	NA	month	2.4	
+1852	4	NA	NA	NA	month	8	
+1852	5	NA	NA	NA	month	14.9	
+1852	6	NA	NA	NA	month	17	
+1852	7	NA	NA	NA	month	20.7	
+1852	8	NA	NA	NA	month	17.8	
+1852	9	NA	NA	NA	month	14.1	
+1852	10	NA	NA	NA	month	8.8	
+1852	11	NA	NA	NA	month	7.8	
+1852	12	NA	NA	NA	month	3.3	

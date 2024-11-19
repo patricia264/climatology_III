@@ -1,0 +1,111 @@
+SEF	1.0.0
+ID	Basel_Wolleb
+Name	Basel
+Lat	47.55936
+Lon	7.58848
+Alt	255
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Wolleb
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1777	4	NA	NA	NA	month	9.3	
+1777	5	NA	NA	NA	month	13.8	
+1777	6	NA	NA	NA	month	16.9	
+1777	7	NA	NA	NA	month	18.2	
+1777	8	NA	NA	NA	month	20.3	
+1777	9	NA	NA	NA	month	15.5	
+1777	10	NA	NA	NA	month	11.8	
+1777	11	NA	NA	NA	month	6.5	
+1777	12	NA	NA	NA	month	0.8	
+1778	1	NA	NA	NA	month	NA	
+1778	2	NA	NA	NA	month	2.4	
+1778	3	NA	NA	NA	month	6.1	
+1778	4	NA	NA	NA	month	11.3	
+1778	5	NA	NA	NA	month	15.5	
+1778	6	NA	NA	NA	month	17.2	
+1778	7	NA	NA	NA	month	NA	
+1778	8	NA	NA	NA	month	20.2	
+1778	9	NA	NA	NA	month	13.4	
+1778	10	NA	NA	NA	month	9.8	
+1778	11	NA	NA	NA	month	7	
+1778	12	NA	NA	NA	month	5.3	
+1779	1	NA	NA	NA	month	-4.1	
+1779	2	NA	NA	NA	month	3.9	
+1779	3	NA	NA	NA	month	6.9	
+1779	4	NA	NA	NA	month	12.9	
+1779	5	NA	NA	NA	month	16.1	
+1779	6	NA	NA	NA	month	15.8	
+1779	7	NA	NA	NA	month	19.1	
+1779	8	NA	NA	NA	month	19.5	
+1779	9	NA	NA	NA	month	17.3	
+1779	10	NA	NA	NA	month	12.8	
+1779	11	NA	NA	NA	month	7.1	
+1779	12	NA	NA	NA	month	6.5	
+1780	1	NA	NA	NA	month	-1	
+1780	2	NA	NA	NA	month	0.1	
+1780	3	NA	NA	NA	month	9.1	
+1780	4	NA	NA	NA	month	8.6	
+1780	5	NA	NA	NA	month	15.4	
+1780	6	NA	NA	NA	month	18.4	
+1780	7	NA	NA	NA	month	20	
+1780	8	NA	NA	NA	month	20.5	
+1780	9	NA	NA	NA	month	16.3	
+1780	10	NA	NA	NA	month	11.7	
+1780	11	NA	NA	NA	month	5.3	
+1780	12	NA	NA	NA	month	0.7	
+1781	1	NA	NA	NA	month	1.9	
+1781	2	NA	NA	NA	month	4.7	
+1781	3	NA	NA	NA	month	7.4	
+1781	4	NA	NA	NA	month	12.1	
+1781	5	NA	NA	NA	month	16.2	
+1781	6	NA	NA	NA	month	18.4	
+1781	7	NA	NA	NA	month	19.9	
+1781	8	NA	NA	NA	month	20.4	
+1781	9	NA	NA	NA	month	16.5	
+1781	10	NA	NA	NA	month	9.2	
+1781	11	NA	NA	NA	month	5.8	
+1781	12	NA	NA	NA	month	4.3	
+1782	1	NA	NA	NA	month	3.5	
+1782	2	NA	NA	NA	month	-2.4	
+1782	3	NA	NA	NA	month	5.1	
+1782	4	NA	NA	NA	month	8.4	
+1782	5	NA	NA	NA	month	13.6	
+1782	6	NA	NA	NA	month	19.5	
+1782	7	NA	NA	NA	month	21.4	
+1782	8	NA	NA	NA	month	18.4	
+1782	9	NA	NA	NA	month	15.1	
+1782	10	NA	NA	NA	month	8	
+1782	11	NA	NA	NA	month	2	
+1782	12	NA	NA	NA	month	0.7	
+1783	1	NA	NA	NA	month	5.2	
+1783	2	NA	NA	NA	month	5.2	
+1783	3	NA	NA	NA	month	5.1	
+1783	4	NA	NA	NA	month	10.5	
+1783	5	NA	NA	NA	month	14.7	
+1783	6	NA	NA	NA	month	17.1	
+1783	7	NA	NA	NA	month	21.2	
+1783	8	NA	NA	NA	month	18.5	
+1783	9	NA	NA	NA	month	15.7	
+1783	10	NA	NA	NA	month	11.3	
+1783	11	NA	NA	NA	month	5.7	
+1783	12	NA	NA	NA	month	1.1	
+1784	1	NA	NA	NA	month	-2.4	
+1784	2	NA	NA	NA	month	-0.7	
+1784	3	NA	NA	NA	month	5.1	
+1784	4	NA	NA	NA	month	7.4	
+1784	5	NA	NA	NA	month	17	
+1784	6	NA	NA	NA	month	18.7	
+1784	7	NA	NA	NA	month	20.1	
+1784	8	NA	NA	NA	month	17.6	
+1784	9	NA	NA	NA	month	17.9	
+1784	10	NA	NA	NA	month	7.1	
+1784	11	NA	NA	NA	month	5.5	
+1784	12	NA	NA	NA	month	0	
+1785	1	NA	NA	NA	month	1.7	
+1785	2	NA	NA	NA	month	0.1	
+1785	3	NA	NA	NA	month	-0.6	
+1785	4	NA	NA	NA	month	6.9	
+1785	5	NA	NA	NA	month	15	

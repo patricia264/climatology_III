@@ -1,0 +1,16 @@
+SEF	1.0.0
+ID	Geneva_Mallet
+Name	Geneva
+Lat	46.20151
+Lon	6.14838
+Alt	389
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Mallet | Address=Maison Mallet
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1786	3	NA	NA	NA	month	NA	
+1786	4	NA	NA	NA	month	10.9	
+1786	5	NA	NA	NA	month	NA	

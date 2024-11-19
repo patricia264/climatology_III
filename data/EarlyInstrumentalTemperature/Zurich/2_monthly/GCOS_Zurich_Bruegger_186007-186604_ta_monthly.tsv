@@ -1,0 +1,33 @@
+SEF	1.0.0
+ID	Zurich_Bruegger
+Name	Zürich
+Lat	47.371011
+Lon	8.533664
+Alt	420
+Source	GCOS
+Link	
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Brügger|QC software=dataresqc v1.1.0
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1860	7	NA	NA	NA	month	17.6	
+1860	8	NA	NA	NA	month	15.6	
+1860	9	NA	NA	NA	month	NA	
+1862	2	NA	NA	NA	month	3.5	
+1862	3	NA	NA	NA	month	9.8	
+1862	4	NA	NA	NA	month	NA	
+1862	5	NA	NA	NA	month	NA	
+1863	2	NA	NA	NA	month	NA	
+1863	3	NA	NA	NA	month	7.5	
+1863	4	NA	NA	NA	month	NA	
+1864	12	NA	NA	NA	month	-2.6	
+1865	1	NA	NA	NA	month	1.7	
+1865	2	NA	NA	NA	month	-0.4	
+1865	3	NA	NA	NA	month	1.5	
+1865	4	NA	NA	NA	month	14.2	
+1865	5	NA	NA	NA	month	17.6	
+1865	6	NA	NA	NA	month	18.5	
+1866	2	NA	NA	NA	month	5.1	
+1866	3	NA	NA	NA	month	6.5	
+1866	4	NA	NA	NA	month	NA	

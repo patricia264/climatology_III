@@ -1,0 +1,32 @@
+SEF	1.0.0
+ID	Bern_Fueter
+Name	Bern
+Lat	46.946688
+Lon	7.432487
+Alt	540
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Fueter
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1803	12	NA	NA	NA	month	NA	
+1804	1	NA	NA	NA	month	NA	
+1804	2	NA	NA	NA	month	NA	
+1804	3	NA	NA	NA	month	NA	
+1804	12	NA	NA	NA	month	NA	
+1805	1	NA	NA	NA	month	NA	
+1805	2	NA	NA	NA	month	NA	
+1805	4	NA	NA	NA	month	8.9	
+1805	5	NA	NA	NA	month	13.6	
+1805	6	NA	NA	NA	month	15.7	
+1805	7	NA	NA	NA	month	16.8	
+1805	9	NA	NA	NA	month	NA	
+1805	10	NA	NA	NA	month	10	
+1805	11	NA	NA	NA	month	2.7	
+1805	12	NA	NA	NA	month	NA	
+1806	4	NA	NA	NA	month	NA	
+1806	8	NA	NA	NA	month	NA	
+1806	10	NA	NA	NA	month	NA	
+1806	11	NA	NA	NA	month	NA	

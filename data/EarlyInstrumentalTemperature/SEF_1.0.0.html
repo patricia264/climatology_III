@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class=" js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+ 
+
+      
+
+  <h1 class="title page-title"><span property="schema:name" class="field field--name-title field--type-string field--label-hidden">The Station Exchange Format (SEF)</span>
+</h1>
+
+
+   
+<p>This
+ is a file format specification for newly-digitised historical weather 
+observations. It has been produced to support the work of the <a href="https://datarescue.climate.copernicus.eu/">Copernicus Data Rescue Service</a> in particular to allow people rescuing observations to present them for widespread use in a simple but standard format.</p>
+
+<p>This format is for land observations from fixed stations. Marine observations, and moving observing platforms, should use the <a href="https://datarescue.climate.copernicus.eu/st_formatting-marine-data">IMMA</a> format instead.</p>
+
+<h3><strong>What is it, and why?</strong></h3>
+
+<p>Weather data rescue is the process of getting historical weather 
+observations off paper, into digital formats, and into use. This is 
+typically done in two steps:</p>
+
+<ol><li>A <em>transcription</em> step which finds observations archived 
+on paper and produces digital versions of those observations - typically
+ as Excel spreadsheets or in a similar format.</li>
+	<li>A <em>database-building</em> step which converts the new digital observations into the format and <a href="https://en.wikipedia.org/wiki/Database_schema">schema</a> used by an observations database, and adds the observations to the database.</li>
+</ol><p>These two steps are usually done by different people: the first 
+by a large group of observation experts (transcribers), each interested 
+in a different set of to-be-digitised observations; the second by a 
+small group of synthesisers trying to make the best possible database. 
+The split between the steps causes problems: the output of step one 
+(variably-structured Excel spreadsheets) is poorly suited as the input 
+of step 2. We cannot ask the transcribers to produce database-ready 
+output, because this requires them to know too much about the precise 
+and ideosyncratic details of each database, and we cannot expect the 
+synthesisers to work with millions of variably-structured Excel 
+spreadsheets - partly because they would have to learn too much about 
+the ideosyncrasies of each observation source, and partly because there 
+are many fewer synthesisers than transcribers. The practical effect of 
+this is that observations pile up in a transcribed-but-unusable state, 
+and it takes too long to get them into use.</p>
+
+<p>The Station Exchange Format (SEF) is a proposed new output for the 
+transcription step. It will eliminate the bottleneck between the steps 
+by specifying a single data format that is suitable both as the output 
+of step one and the input to step 2. This means the format must have 
+two, somewhat contradictory, properties:</p>
+
+<ol><li>It must be machine readable with NO human involvement – so it 
+needs all the necessary metadata in an unambiguous arrangement. 
+Otherwise it is too expensive for synthesizers to read.</li>
+	<li>It must be easy for non-experts to read, understand, and create.</li>
+</ol><p>If SEF is successful, the problems of reading data can be 
+confined to a couple of software libraries. So it needs to be possible 
+to read it unambiguously, but it does not matter how slow or difficult 
+this is – it matters a great deal if it is hard to create. The best 
+format will adequate for readers, but optimised for creators. That means
+ plain text, editable in a text editor, editable in a spreadsheet 
+format, opens in the right program when double clicked; easy to read and
+ write in Python, R, and even Fortran.</p>
+
+<p>The current design tries to be both simple enough to be obvious, and 
+powerful enough to be useful, by having a core set of headers and 
+columns which are obvious, and an arbitrarily extensible metadata 
+section. It still usually requires basic programming skills from the 
+transcriber's side, which might be a significant hurdle for some users. 
+Tutorials are provided to lower this hurdle.</p>
+
+<h2><strong>The file format</strong></h2>
+
+<p>One SEF file contains observations of one variable from one station. It is a text file encoded as <a href="https://en.wikipedia.org/wiki/UTF-8">UTF8</a>. It is a <a href="https://en.wikipedia.org/wiki/Tab-separated_values">tab-separated values</a> file and should have a <code>.tsv</code>
+ extension. This means it can be easily viewed and edited in any text 
+editor or spreadsheet program (though care should be taken to preserve 
+the tab structure and text encoding).</p>
+
+<h3><strong>Header</strong></h3>
+
+<p>The first 12 lines of the file are a series of headers, each given as a <code>name</code>::<code>value</code> pair separated by a tab. They must be in the order given. Missing values can be given as <code>NA</code> or left blank. The SEF version number must be present.</p>
+
+<ul><li>
+	<p><code>SEF</code>: The first three characters in the file must be <code>SEF</code>. The associated value is the <a href="https://semver.org/">semantic version</a>
+ of the format used. This enables software to recognise the format and 
+read the rest of the file correctly. At the moment, version 1.0.0 is in 
+use.</p>
+	</li>
+	<li>
+	<p><code>ID</code>: This is the <em>machine readable</em> name of the 
+station. It may contain only lower-case or upper-case Latin letters, 
+numbers or the characters: - (dash), _ (underscore) or . (full stop). It
+ must not contain blanks. There is no length limit.</p>
+	</li>
+	<li>
+	<p><code>Name</code>: Station name - any string (except no tabs or carriage returns). This is the <em>human readable</em> name of the station.</p>
+	</li>
+	<li>
+	<p><code>Lat</code>: Latitude of the station (degrees north as decimal number).</p>
+	</li>
+	<li>
+	<p><code>Lon</code>: Longitude of the station (degrees east as decimal number).</p>
+	</li>
+	<li>
+	<p><code>Alt</code>: Altitude of the station (meters above sea-level).</p>
+	</li>
+	<li>
+	<p><code>Source</code>: Source identifier. This is for making 
+collections of SEF files and identifies a group of files from the same 
+source. It will be set by the collector. Any string (except no tabs or 
+carriage returns).</p>
+	</li>
+	<li>
+	<p><code>Link</code>: Where to find additional metadata (a <a href="https://en.wikipedia.org/wiki/URL">web address</a>). SEF users are strongly recommended to add their metadata to the <a href="https://data-rescue.copernicus-climate.eu/registry">C3S DRS metadata registry</a> and then link to the appropriate page in that service.</p>
+	</li>
+	<li>
+	<p><code>Vbl</code>: Name of the variable included in the file. There is a <a href="https://datarescue.climate.copernicus.eu/node/84">recommended list</a> of standard variable names. Use this if possible.</p>
+	</li>
+	<li>
+	<p><code>Stat</code>: What statistic (mean, max, min, ...) is reported from the variable. There is a <a href="https://datarescue.climate.copernicus.eu/node/82">recommended list</a> of standard statistics. Use this if possible.</p>
+	</li>
+	<li>
+	<p><code>Units</code>: Units in which the variable value is given in 
+the file (e.g. 'hPa', 'Pa', 'K', 'm/s'). Where possible, this should be 
+compliant with <a href="https://www.unidata.ucar.edu/software/udunits/">UDUNITS-2</a>. The units in which the values were originally measured can be given in the <code>Meta</code> column (see Data table section).</p>
+	</li>
+	<li>
+	<p><code>Meta</code>: Anything else. Pipe-separated (<code>|</code>) string of metadata entries. Each entry may be any string (except no tabs, pipes, or carriage returns). There is a <a href="https://datarescue.climate.copernicus.eu/node/81">standard list of meaningful entries</a>,
+ but other entries can be added as necessary. Metadata specified here is
+ assumed to apply to all observations in this file, unless overwritten 
+by the observation-specific metadata entry.</p>
+	</li>
+</ul><h3><strong>Data table</strong></h3>
+
+<p>Lines 13 and onward in the file are a table of observations. Line 13 
+is a header, lines 14 and on are observations. Missing values can be 
+given as <code>NA</code> or left blank. The table must contain these columns in this order:</p>
+
+<ul><li>
+	<p><code>Year</code>: Year in which the observation was made (UTC). An integer.</p>
+	</li>
+	<li>
+	<p><code>Month</code>: Month in which the observation was made (UTC). 
+An integer (1-12). For annual data, it is recommended to leave this 
+column empty (or <code>NA</code>) when referring to calendar years.</p>
+	</li>
+	<li>
+	<p><code>Day</code>: Day of month in which the observation was made 
+(UTC). An integer (1-31). For monthly, seasonal, or annual data, it is 
+recommended to leave this column empty (or <code>NA</code>) when referring to calendar months or years.</p>
+	</li>
+	<li>
+	<p><code>Hour</code>: Hour at which the observation was made (UTC). An 
+integer (0-24). The use of 24 is recommended for daily values calculated
+ from midnight to midnight (UTC). This is to avoid ambiguities in the 
+date.</p>
+	</li>
+	<li>
+	<p><code>Minute</code>: Minute at which the observation was made (UTC). An integer (0-59).</p>
+	</li>
+	<li>
+	<p><code>Period</code>: Time period of observation (instantaneous, sum over previous 24 hours, ...). There is a <a href="https://datarescue.climate.copernicus.eu/node/83">table of meaningful codes</a>.</p>
+	</li>
+	<li>
+	<p><code>Value</code>: The observation value. It is recommended to round the value to a meaningful number of decimal places.</p>
+	</li>
+	<li>
+	<p><code>Meta</code>: Anything else. Pipe-separated (<code>|</code>) string of metadata entries. Each entry may be any string (except no tabs, pipes, or carriage returns). There is a <a href="https://datarescue.climate.copernicus.eu/node/81">standard list of meaningful entries</a>,
+ but other entries can be added as necessary. Metadata specified here 
+only applies to this observation, and overrides any file-wide 
+specification.</p>
+	</li>
+</ul><h3><strong>Examples</strong></h3>
+
+<p>Examples of SEF files, alongside the original digitisation spreadsheets, metadata, and conversion scripts, can be found <a href="https://github.com/C3S-Data-Rescue-Lot1-WP3/Rescued-Data">here</a>.</p>
+
+<p>There is also a <a href="https://c3s-data-rescue-lot1-wp3.github.io/SEF/">tutorial</a> on how to create a SEF file starting from an Excel sheet.</p>
+
+<h3><strong>Station relocations and homogenised data</strong></h3>
+
+<p>When a station is relocated and gets new coordinates, a new SEF file should be created.</p>
+
+<p>Even though the SEF was principally designed for raw data, it is also possible to use it for homogenised data. Specific <a href="https://datarescue.climate.copernicus.eu/node/81">metadata entries</a>
+ have been pre-defined for that. In the case of homogenised data, a 
+single SEF file is sufficient. The coordinates indicated in the header 
+must be those of the location with respect to which the data have been 
+adjusted (usually the most recent location).</p>
+
+<h2><strong>R Package</strong></h2>
+
+<p>R functions are provided within the package <code>dataresqc</code> to facilitate reading and writing SEF files. You can install the package from the R command line with:</p>
+
+<p><code>&nbsp;&nbsp; install.packages("dataresqc") </code></p>
+
+<p>and load them with:</p>
+
+<p><code>&nbsp;&nbsp; library(dataresqc) </code></p>
+
+<p>In particular:</p>
+
+<ul><li><code>read_sef</code> reads a SEF file into a R data frame.</li>
+	<li><code>read_meta</code> reads one or more fields from the SEF header.</li>
+	<li><code>write_sef</code> transforms a R data frame into a SEF file.</li>
+	<li><code>check_sef</code> verify the compliance of a SEF file to these guidelines.</li>
+</ul><h2><strong>Python API</strong></h2>
+
+<p>Functions to manipulate SEF files are also available for Python <a href="https://github.com/C3S-Data-Rescue-Lot1-WP3/SEF-Python">here</a>.</p>
+
+<h2><strong>Authors and acknowledgements</strong></h2>
+
+<p>This document was created by Philip Brohan (UKMO) and is currently maintained by Yuri Brugnara (University of Bern; <a href="mailto:yuri.brugnara@giub.unibe.ch">yuri.brugnara@giub.unibe.ch</a>). The file format specification is the responsibility of the <a href="https://datarescue.climate.copernicus.eu/">Copernicus Data Rescue Service</a>.</p>
+
+<p>&nbsp;</p>
+      
+
+</body></html>

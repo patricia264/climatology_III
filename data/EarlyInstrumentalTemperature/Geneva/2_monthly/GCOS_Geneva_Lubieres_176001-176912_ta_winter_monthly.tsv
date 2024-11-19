@@ -1,0 +1,83 @@
+SEF	1.0.0
+ID	Geneva_Lubieres
+Name	Geneva
+Lat	46.19861
+Lon	6.14833
+Alt	NA
+Source	GCOS
+Link	NA
+Vbl	ta
+Stat	mean
+Units	C
+Meta	Observer=Lubières | Address=Unknown
+Year	Month	Day	Hour	Minute	Period	Value	Meta
+1760	1	NA	NA	NA	month	NA	
+1760	2	NA	NA	NA	month	NA	
+1760	3	NA	NA	NA	month	NA	
+1760	4	NA	NA	NA	month	12	
+1760	10	NA	NA	NA	month	NA	
+1760	11	NA	NA	NA	month	NA	
+1760	12	NA	NA	NA	month	NA	
+1761	1	NA	NA	NA	month	NA	
+1761	2	NA	NA	NA	month	3.7	
+1761	3	NA	NA	NA	month	6.9	
+1761	4	NA	NA	NA	month	9.3	
+1761	10	NA	NA	NA	month	NA	
+1761	11	NA	NA	NA	month	4.4	
+1761	12	NA	NA	NA	month	0.7	
+1762	1	NA	NA	NA	month	2.2	
+1762	2	NA	NA	NA	month	1.6	
+1762	3	NA	NA	NA	month	3.6	
+1762	4	NA	NA	NA	month	11.8	
+1762	10	NA	NA	NA	month	10.1	
+1762	11	NA	NA	NA	month	4.5	
+1762	12	NA	NA	NA	month	NA	
+1763	1	NA	NA	NA	month	-1.4	
+1763	2	NA	NA	NA	month	4.9	
+1763	3	NA	NA	NA	month	NA	
+1763	4	NA	NA	NA	month	8.9	
+1763	10	NA	NA	NA	month	NA	
+1763	11	NA	NA	NA	month	NA	
+1763	12	NA	NA	NA	month	NA	
+1764	1	NA	NA	NA	month	4	
+1764	2	NA	NA	NA	month	NA	
+1764	3	NA	NA	NA	month	NA	
+1764	4	NA	NA	NA	month	NA	
+1764	10	NA	NA	NA	month	NA	
+1764	11	NA	NA	NA	month	NA	
+1764	12	NA	NA	NA	month	NA	
+1765	1	NA	NA	NA	month	NA	
+1765	2	NA	NA	NA	month	1	
+1765	3	NA	NA	NA	month	8.2	
+1765	4	NA	NA	NA	month	10.2	
+1765	10	NA	NA	NA	month	NA	
+1765	11	NA	NA	NA	month	NA	
+1765	12	NA	NA	NA	month	1	
+1766	1	NA	NA	NA	month	-4	
+1766	2	NA	NA	NA	month	0	
+1766	3	NA	NA	NA	month	4.7	
+1766	4	NA	NA	NA	month	10.4	
+1766	10	NA	NA	NA	month	NA	
+1766	11	NA	NA	NA	month	NA	
+1766	12	NA	NA	NA	month	NA	
+1767	1	NA	NA	NA	month	NA	
+1767	2	NA	NA	NA	month	NA	
+1767	3	NA	NA	NA	month	NA	
+1767	4	NA	NA	NA	month	NA	
+1767	10	NA	NA	NA	month	NA	
+1767	11	NA	NA	NA	month	NA	
+1767	12	NA	NA	NA	month	-1.1	
+1768	1	NA	NA	NA	month	-1.6	
+1768	2	NA	NA	NA	month	3.1	
+1768	3	NA	NA	NA	month	3.1	
+1768	4	NA	NA	NA	month	9.8	
+1768	10	NA	NA	NA	month	10.6	
+1768	11	NA	NA	NA	month	5.1	
+1768	12	NA	NA	NA	month	1.4	
+1769	1	NA	NA	NA	month	1.4	
+1769	2	NA	NA	NA	month	2.5	
+1769	3	NA	NA	NA	month	3.3	
+1769	4	NA	NA	NA	month	10.2	
+1769	10	NA	NA	NA	month	7.2	
+1769	11	NA	NA	NA	month	NA	
+1769	12	NA	NA	NA	month	1.6	
