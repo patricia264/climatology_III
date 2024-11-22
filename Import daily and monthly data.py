@@ -51,7 +51,8 @@ def load_and_filter_data(base_path, locations, subdirectory, file_suffix_pattern
         data[date_col] = pd.to_datetime(data[date_col], format=date_format)
 
         # Filter the data by date range
-        filtered_data[location] = data[(data[date_col] >= start_date) & (data[date_col] <= end_date)]
+        #filtered_data[location] = data[(data[date_col] >= start_date) & (data[date_col] <= end_date)]
+        filtered_data[location] = data
 
     return filtered_data
 
@@ -122,46 +123,433 @@ plt.show()
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load the dataset
 file_path = 'data/CAP9_reconstructions_1728-2020.csv'
 weather_types = pd.read_csv(file_path)
-
 # Convert the first column to DateTime format and rename it to 'date'
 weather_types.rename(columns={weather_types.columns[0]: 'date'}, inplace=True)
 weather_types['date'] = pd.to_datetime(weather_types['date'], format='%Y-%m-%d')
 
-# Filter for the first three months of the year (Jan, Feb, Mar)
-weather_types_first_quarter = weather_types[weather_types['date'].dt.month.isin([1, 2, 3])]
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Filter for the year 1796 and the first three months
-weather_1796_q1 = weather_types_first_quarter[weather_types_first_quarter['date'].dt.year == 1796]
 
-# Frequency analysis for 1796 (January, February, March)
-freq_1796_q1 = weather_1796_q1['WT'].value_counts(normalize=True) * 100  # Percentages
+def weather_type_frequency_analysis(
+        weather_types,
+        months,
+        analysis_start,
+        analysis_end,
+        baseline_start,
+        baseline_end,
+        title_suffix="Weather Type Frequencies"
+):
+    """
+    Perform a frequency analysis of weather types for a specific period and compare it
+    to a climatological baseline.
 
-# Frequency analysis for the climatological period (entire dataset or a baseline period)
-clim_start, clim_end = 1728, 2020  # Define baseline period
-clim_data_q1 = weather_types_first_quarter[
-    (weather_types_first_quarter['date'].dt.year >= clim_start) &
-    (weather_types_first_quarter['date'].dt.year <= clim_end)
-]
-freq_clim_q1 = clim_data_q1['WT'].value_counts(normalize=True) * 100  # Percentages
+    Parameters:
+        weather_types (pd.DataFrame): DataFrame containing the weather type data with a 'date' column.
+        months (list): List of months to filter (e.g., [11, 12, 1, 2, 3, 4] for Nov-Apr).
+        analysis_start (str): Start date for the analysis period (e.g., '1795-11-01').
+        analysis_end (str): End date for the analysis period (e.g., '1796-04-30').
+        baseline_start (int): Start year for the climatological baseline period.
+        baseline_end (int): End year for the climatological baseline period.
+        title_suffix (str): Suffix for plot titles (e.g., "Weather Type Frequencies").
 
-# Combine results into a comparison DataFrame
-comparison_q1 = pd.DataFrame({
-    '1796 (%)': freq_1796_q1,
-    f'{clim_start}-{clim_end} (%)': freq_clim_q1
-}).fillna(0)  # Fill missing weather types with 0 frequency
+    Returns:
+        pd.DataFrame: Comparison of frequencies for the analysis period and climatology.
+    """
 
-# Print the comparison table
-print(comparison_q1)
+    # Filter for specified months
+    filtered_weather_types = weather_types[weather_types['date'].dt.month.isin(months)]
 
-# Optional: Visualize the comparison
-comparison_q1.plot(kind='bar', figsize=(10, 6), alpha=0.7)
-plt.title('Weather Type Frequencies (Jan-Mar): 1796 vs Climatology')
+    # Filter for analysis period
+    analysis_data = filtered_weather_types[
+        (filtered_weather_types['date'] >= analysis_start) &
+        (filtered_weather_types['date'] <= analysis_end)
+        ]
+
+    # Frequency analysis for the analysis period
+    freq_analysis = analysis_data['WT'].value_counts(normalize=True) * 100
+
+    # Filter for climatological baseline period
+    baseline_data = filtered_weather_types[
+        (filtered_weather_types['date'].dt.year >= baseline_start) &
+        (filtered_weather_types['date'].dt.year <= baseline_end)
+        ]
+
+    # Frequency analysis for the climatological baseline period
+    freq_baseline = baseline_data['WT'].value_counts(normalize=True) * 100
+
+    # Combine results into a comparison DataFrame
+    comparison = pd.DataFrame({
+        f'{analysis_start[:4]}/{analysis_end[:4]} (%)': freq_analysis,
+        f'{baseline_start}-{baseline_end} (%)': freq_baseline
+    }).fillna(0)  # Fill missing weather types with 0 frequency
+
+    # Print the comparison table
+    print(comparison)
+
+    # Optional: Visualize the comparison
+    comparison.plot(kind='bar', figsize=(10, 6), alpha=0.7)
+    plt.title(f'{title_suffix}: {analysis_start[:4]}-{analysis_end[:4]} vs {baseline_start}-{baseline_end}')
+    plt.xlabel('Weather Type')
+    plt.ylabel('Frequency (%)')
+    plt.legend(title='Period')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.show()
+
+    return comparison
+
+weather_type_frequency_analysis(
+    weather_types=weather_types,
+    months=[1, 2, 3],
+    analysis_start='1796-01-01',
+    analysis_end='1796-03-31',
+    baseline_start=1728,
+    baseline_end=2020,
+    title_suffix="Weather Type Frequencies (Jan-Mar)"
+)
+weather_type_frequency_analysis(
+    weather_types=weather_types,
+    months=[12, 1, 2],
+    analysis_start='1795-12-01',
+    analysis_end='1796-02-28',
+    baseline_start=1728,
+    baseline_end=2020,
+    title_suffix="Weather Type Frequencies (Dec-Feb)"
+)
+# %%
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Merge weather types with daily temperature data
+combined_data = {}
+for location, temp_data in daily_data.items():
+    combined_data[location] = temp_data.merge(weather_types[['date', 'WT']], left_on='Date', right_on='date', how='inner')
+
+# Compute average temperature by weather type for each location
+mean_temp_by_wt = {}
+for location, data in combined_data.items():
+    mean_temp_by_wt[location] = data.groupby('WT')['Ta_mean'].mean()
+
+# Create a combined DataFrame for visualization
+combined_mean_temp = pd.DataFrame(mean_temp_by_wt)
+
+# Plot the mean temperatures by weather type
+combined_mean_temp.plot(kind='bar', figsize=(12, 6), alpha=0.7)
+plt.title('Average Temperature by Weather Type for Swiss Locations')
 plt.xlabel('Weather Type')
-plt.ylabel('Frequency (%)')
-plt.legend(title='Period')
+plt.ylabel('Mean Temperature (°C)')
+plt.legend(title='Location')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
+
+# %%
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+def analyze_weather_type_temperature(daily_data, weather_data, months_of_interest, period_name):
+    """
+    Analyze the relationship between weather types and temperatures across Switzerland.
+
+    Parameters:
+        daily_data (dict): Dictionary of DataFrames with daily temperature data for locations.
+        weather_data (DataFrame): DataFrame containing weather types with date information.
+        months_of_interest (list): List of months (integers) to include in the analysis (e.g., [11, 12, 1, 2, 3, 4]).
+        period_name (str): Description of the period for use in plot titles (e.g., 'Winter', 'Extended Winter').
+
+    Returns:
+        None. Displays plots of the results.
+    """
+    # Filter weather data to include only the months of interest
+    weather_filtered = weather_data[weather_data['date'].dt.month.isin(months_of_interest)]
+
+    # Combine temperatures across all locations into one DataFrame
+    temperature_data = pd.concat(
+        [
+            daily_data[location][['Date', 'Ta_mean']].rename(columns={'Ta_mean': location})
+            for location in daily_data.keys()
+        ],
+        axis=1
+    )
+    temperature_data = temperature_data.loc[:, ~temperature_data.columns.duplicated()]
+
+    # Merge with weather types on the date
+    temperature_data['Date'] = pd.to_datetime(temperature_data['Date'])
+    merged_data = weather_filtered.merge(temperature_data, left_on='date', right_on='Date')
+
+    # Calculate mean temperature across all locations for each weather type
+    merged_data['Mean_Temp'] = merged_data[daily_data.keys()].mean(axis=1)
+    mean_temps_by_weather_type = merged_data.groupby('WT')['Mean_Temp'].mean()
+
+    # Sort weather types in numerical order (1 through 9)
+    mean_temps_by_weather_type = mean_temps_by_weather_type.reindex(range(1, 10), fill_value=0)
+
+    # Plot the mean temperatures by weather type
+    plt.figure(figsize=(10, 6))
+    mean_temps_by_weather_type.plot(kind='bar', color='skyblue', alpha=0.8)
+    plt.title(f'Mean Temperatures by Weather Type ({period_name})')
+    plt.xlabel('Weather Type')
+    plt.ylabel('Mean Temperature (°C)')
+    plt.xticks(ticks=range(0, 9), labels=range(1, 10), rotation=0)  # Ensures correct labels
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.show()
+
+    # Analyze the frequency of weather types
+    freq_weather_types = weather_filtered['WT'].value_counts(normalize=True) * 100
+    freq_weather_types = freq_weather_types.reindex(range(1, 10), fill_value=0)
+
+    # Print results
+    print(f"Mean Temperatures by Weather Type ({period_name}):")
+    print(mean_temps_by_weather_type)
+    print(f"\nFrequency of Weather Types ({period_name}) (%):")
+    print(freq_weather_types)
+
+
+# Example usage
+months_of_interest_djf = [12, 1, 2]  # Meteorological winter
+months_of_interest_boreal = [11, 12, 1, 2, 3, 4]  # Extended boreal winter
+
+print("DJF Results:")
+analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_djf, "Winter")
+
+print("\nBoreal Winter Results:")
+analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_boreal, "Extended Winter")
+
+# %%
+def plot_temperature_comparison(daily_data, start_year, end_year, winter_start, winter_end):
+    """
+    Plot the mean temperatures for the extended winter period (Nov-Apr) of a specific year
+    and the climatological mean for the same months in a reference period.
+
+    Parameters:
+        daily_data (dict): Dictionary of daily temperature DataFrames for locations.
+        start_year (int): Start year of the reference period for climatology.
+        end_year (int): End year of the reference period for climatology.
+        winter_start (str): Start date of the specific winter (e.g., '1795-11-01').
+        winter_end (str): End date of the specific winter (e.g., '1796-04-30').
+
+    Returns:
+        None. Displays the plot.
+    """
+    import numpy as np
+
+    # Combine temperature data for Basel, Bern, Geneva, Zurich (skip SwissPlateau)
+    selected_locations = ["Basel", "Bern", "Geneva", "Zurich"]
+    combined_data = pd.concat(
+        [daily_data[loc][['Date', 'Ta_mean']] for loc in selected_locations]
+    )
+
+    # Convert to datetime and filter data for winter period
+    combined_data['Date'] = pd.to_datetime(combined_data['Date'])
+    combined_data['Month'] = combined_data['Date'].dt.month
+    combined_data['Year'] = combined_data['Date'].dt.year
+
+    # Specific winter (e.g., 1795-1796)
+    specific_winter = combined_data[
+        (combined_data['Date'] >= winter_start) & (combined_data['Date'] <= winter_end)
+    ]
+    specific_winter['Month'] = specific_winter['Date'].dt.month
+    specific_winter_mean = specific_winter.groupby('Month')['Ta_mean'].mean()
+
+    # Climatological mean for the same months (e.g., 30 years before)
+    climatology = combined_data[
+        (combined_data['Year'] >= start_year) & (combined_data['Year'] <= end_year) &
+        (combined_data['Month'].isin([11, 12, 1, 2, 3, 4]))
+    ]
+    climatology['Month'] = climatology['Date'].dt.month
+    climatology_mean = climatology.groupby('Month')['Ta_mean'].mean()
+
+    # Ensure proper month order
+    months = [11, 12, 1, 2, 3, 4]
+    specific_winter_mean = specific_winter_mean.reindex(months, fill_value=np.nan)
+    climatology_mean = climatology_mean.reindex(months, fill_value=np.nan)
+
+    # Plot
+    plt.figure(figsize=(10, 6))
+    plt.plot(
+        ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+        specific_winter_mean,
+        label='Winter 1795-1796',
+        color='blue',
+        marker='o',
+    )
+    plt.plot(
+        ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+        climatology_mean,
+        label=f'Climatology ({start_year}-{end_year})',
+        color='orange',
+        linestyle='--',
+        marker='o',
+    )
+
+    # Labels and title
+    plt.title('Temperature Comparison: Winter 1795-1796 vs Climatology')
+    plt.xlabel('Month')
+    plt.ylabel('Mean Temperature (°C)')
+    plt.legend(title='Period')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.show()
+
+plot_temperature_comparison(
+    daily_data=daily_data,
+    start_year=1765,
+    end_year=1794,
+    winter_start="1795-11-01",
+    winter_end="1796-04-30",
+)
+
+# %%
+def compute_and_plot_winter_temperatures(daily_data):
+    """
+    Compute the mean winter (DJF) temperature for each location and plot the time series.
+
+    Parameters:
+        daily_data (dict): Dictionary of DataFrames with daily temperature data for locations.
+
+    Returns:
+        winter_df (DataFrame): DataFrame with winter (DJF) mean temperatures for each location.
+    """
+    winter_means = {}
+
+    # Loop through each location and compute the mean DJF temperature per year
+    for location, data in daily_data.items():
+        # Convert Date column to datetime if not already
+        data['Date'] = pd.to_datetime(data['Date'])
+
+        # Extract years and filter for December, January, February
+        data['Year'] = data['Date'].dt.year
+        data['Month'] = data['Date'].dt.month
+
+        # Shift December to the next year's winter (e.g., Dec 1795 -> Winter 1796)
+        data.loc[data['Month'] == 12, 'Year'] += 1
+
+        # Filter for winter months and group by year
+        winter_data = data[data['Month'].isin([12, 1, 2])]
+        winter_means[location] = winter_data.groupby('Year')['Ta_mean'].mean()
+
+    # Convert to a DataFrame for plotting
+    winter_df = pd.DataFrame(winter_means)
+
+    # Plotting
+    plt.figure(figsize=(12, 6))
+    for location in winter_df.columns:
+        plt.plot(winter_df.index, winter_df[location], label=location)
+
+    # Labels, title, and legend
+    plt.title('Mean Winter (DJF) Temperatures Over Time')
+    plt.xlabel('Year')
+    plt.ylabel('Mean Temperature (°C)')
+    plt.legend(title='Location')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.show()
+
+    # Return the dataframe for further analysis
+    return winter_df
+
+
+# Example usage
+winter_df = compute_and_plot_winter_temperatures(daily_data)
+
+# Compute the mean winter temperature across all locations
+winter_df['Mean_All_Locations'] = winter_df.mean(axis=1)
+
+# Identify the years where the mean winter temperature is above 2°C
+years_above_2 = winter_df[winter_df['Mean_All_Locations'] > 2].index.tolist()
+
+# Print the years with mean temperatures above 2°C
+print("Years with mean winter temperature above 2°C:")
+print(years_above_2)
+
+# %%
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def weather_type_frequency_analysis(weather_types, years, months):
+    """
+    Perform frequency analysis of weather types for the specified years and months.
+
+    Parameters:
+        weather_types (DataFrame): The weather type data.
+        years (list): List of years to analyze.
+        months (list): List of months to filter for (e.g., [12, 1, 2] for DJF).
+
+    Returns:
+        result (DataFrame): A DataFrame with weather type frequencies for each year.
+    """
+    weather_type_frequencies = {}
+
+    # Loop over the specified years
+    for year in years:
+        # Filter the data for the selected year and months
+        data_filtered = weather_types[(weather_types['date'].dt.year == year) &
+                                      (weather_types['date'].dt.month.isin(months))]
+
+        # Perform the frequency analysis for weather types
+        weather_counts = data_filtered['WT'].value_counts(normalize=True) * 100  # Percentages
+        weather_type_frequencies[year] = weather_counts
+
+    # Convert the result to a DataFrame for better visualization
+    result = pd.DataFrame(weather_type_frequencies).T  # Transpose so years are rows
+    return result
+
+def plot_weather_type_frequency_analysis(weather_types, years_above_2, months=[12, 1, 2], clim_start=1728, clim_end=2020):
+    """
+    Plot the frequency analysis of weather types for each year in the years_above_2 list,
+    along with the climatological reference values (average over entire climatological period).
+
+    Parameters:
+        weather_types (DataFrame): The weather type data.
+        years_above_2 (list): List of years with mean winter temperature above 2°C.
+        months (list): List of months to filter for (e.g., [12, 1, 2] for DJF).
+        clim_start (int): Start year of the climatological baseline period.
+        clim_end (int): End year of the climatological baseline period.
+
+    Returns:
+        None: Displays the plot.
+    """
+    # Perform the frequency analysis for the warm winters (above 2°C)
+    freq_analysis_df = weather_type_frequency_analysis(weather_types, years_above_2, months)
+
+    # Perform the climatological frequency analysis (using the full baseline period)
+    clim_data = weather_types[(weather_types['date'].dt.year >= clim_start) &
+                              (weather_types['date'].dt.year <= clim_end)]
+    clim_freq_analysis_df = weather_type_frequency_analysis(clim_data, range(clim_start, clim_end + 1), months)
+    # Calculate the climatological mean frequencies across all years in the baseline period
+    climatological_mean = clim_freq_analysis_df.mean(axis=0)  # Mean across all years
+
+    # Add the climatological mean as a new column for plotting
+    climatological_mean.name = 'Climatological Mean'
+    print(climatological_mean)
+    freq_analysis_df.loc['Climatological Mean'] = climatological_mean
+    print(freq_analysis_df)
+    # Plot the results
+    plt.figure(figsize=(14, 8))
+
+    # Plot the frequency for the years above 2°C (stacked bar)
+    ax = freq_analysis_df.plot(kind='bar', stacked=True, figsize=(12, 6), width=0.8, ax=plt.gca(), alpha=0.7)
+
+    # Update the x-ticks to show years and add the climatological bar as the last one
+    years_above_2_with_clim = years_above_2 + ['Climatological Mean']
+    ax.set_xticks(range(len(years_above_2_with_clim)))
+    ax.set_xticklabels(years_above_2_with_clim, rotation=45)
+
+    # Labels, title, and legend
+    plt.title(f'Weather Type Frequencies for Warm Winters (Above 2°C) with Climatological Reference')
+    plt.xlabel('Year')
+    plt.ylabel('Frequency (%)')
+
+    plt.legend(title='Weather Type', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.show()
+
+# Example usage (assuming you have your weather_types DataFrame and the years_above_2 list)
+plot_weather_type_frequency_analysis(weather_types, years_above_2)
