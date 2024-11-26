@@ -224,12 +224,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Merge weather types with daily temperature data
+# Merge weather types with daily temperature data and filter for winter months
 combined_data = {}
 for location, temp_data in daily_data.items():
-    combined_data[location] = temp_data.merge(weather_types[['date', 'WT']], left_on='Date', right_on='date', how='inner')
+    # Add a 'month' column to the temperature data for filtering
+    temp_data['month'] = pd.to_datetime(temp_data['Date']).dt.month
 
-# Compute average temperature by weather type for each location
+    # Merge and filter for winter months
+    combined_data[location] = temp_data.merge(
+        weather_types[['date', 'WT']],
+        left_on='Date',
+        right_on='date',
+        how='inner'
+    )
+    combined_data[location] = combined_data[location][combined_data[location]['month'].isin([12, 1, 2])]
+
+# Compute average temperature by weather type for each location (winter months only)
 mean_temp_by_wt = {}
 for location, data in combined_data.items():
     mean_temp_by_wt[location] = data.groupby('WT')['Ta_mean'].mean()
@@ -239,7 +249,7 @@ combined_mean_temp = pd.DataFrame(mean_temp_by_wt)
 
 # Plot the mean temperatures by weather type
 combined_mean_temp.plot(kind='bar', figsize=(12, 6), alpha=0.7)
-plt.title('Average Temperature by Weather Type for Swiss Locations')
+plt.title('Average Winter Temperature by Weather Type for Swiss Locations')
 plt.xlabel('Weather Type')
 plt.ylabel('Mean Temperature (°C)')
 plt.legend(title='Location')
@@ -406,19 +416,24 @@ plot_temperature_comparison(
 )
 
 # %%
-def compute_and_plot_winter_temperatures(daily_data):
+def compute_and_plot_winter_temperatures(daily_data, statistic='mean', time_interval=None):
     """
-    Compute the mean winter (DJF) temperature for each location and plot the time series.
+    Compute and plot winter (DJF) temperatures for each location based on the selected statistic.
 
     Parameters:
         daily_data (dict): Dictionary of DataFrames with daily temperature data for locations.
+        statistic (str): Statistic to compute and plot ('mean', 'max', 'min').
+        time_interval (tuple): Optional tuple specifying the start and end years for the plot (e.g., (1800, 1850)).
 
     Returns:
-        winter_df (DataFrame): DataFrame with winter (DJF) mean temperatures for each location.
+        winter_df (DataFrame): DataFrame with the selected winter (DJF) statistic temperatures for each location.
     """
-    winter_means = {}
+    if statistic not in ['mean', 'max', 'min']:
+        raise ValueError("Invalid statistic. Choose 'mean', 'max', or 'min'.")
 
-    # Loop through each location and compute the mean DJF temperature per year
+    winter_stats = {}
+
+    # Loop through each location and compute the desired DJF statistic per year
     for location, data in daily_data.items():
         # Convert Date column to datetime if not already
         data['Date'] = pd.to_datetime(data['Date'])
@@ -432,34 +447,54 @@ def compute_and_plot_winter_temperatures(daily_data):
 
         # Filter for winter months and group by year
         winter_data = data[data['Month'].isin([12, 1, 2])]
-        winter_means[location] = winter_data.groupby('Year')['Ta_mean'].mean()
+        stats = winter_data.groupby('Year')['Ta_mean'].agg(['mean', 'max', 'min'])
 
-    # Convert to a DataFrame for plotting
-    winter_df = pd.DataFrame(winter_means)
+        winter_stats[location] = stats
+
+    # Combine all locations into a single DataFrame
+    winter_df = pd.concat(winter_stats, axis=1)
+    winter_df.columns = pd.MultiIndex.from_tuples(
+        [(loc, stat) for loc, df in winter_stats.items() for stat in df.columns],
+        names=['Location', 'Statistic']
+    )
+
+    # Extract the desired statistic for plotting
+    plot_data = winter_df.xs(statistic, level='Statistic', axis=1)
+
+    # Apply time interval if specified
+    if time_interval:
+        start_year, end_year = time_interval
+        plot_data = plot_data.loc[start_year:end_year]
 
     # Plotting
     plt.figure(figsize=(12, 6))
-    for location in winter_df.columns:
-        plt.plot(winter_df.index, winter_df[location], label=location)
+    for location in plot_data.columns:
+        plt.plot(plot_data.index, plot_data[location], label=location)
 
     # Labels, title, and legend
-    plt.title('Mean Winter (DJF) Temperatures Over Time')
+    interval_str = f" ({time_interval[0]}–{time_interval[1]})" if time_interval else ""
+    plt.title(f'{statistic.capitalize()} Winter (DJF) Temperatures Over Time{interval_str}')
     plt.xlabel('Year')
-    plt.ylabel('Mean Temperature (°C)')
+    plt.ylabel(f'{statistic.capitalize()} Temperature (°C)')
     plt.legend(title='Location')
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.show()
 
-    # Return the dataframe for further analysis
+    # Return the DataFrame with all statistics for further analysis
     return winter_df
 
 
 # Example usage
-winter_df = compute_and_plot_winter_temperatures(daily_data)
+# Compute and plot mean winter temperatures
+winter_df_mean = compute_and_plot_winter_temperatures(daily_data, statistic='mean')
+winter_df_mean_selected = compute_and_plot_winter_temperatures(daily_data, statistic='mean', time_interval=(1760,1800))
 
-# Compute the mean winter temperature across all locations
-winter_df['Mean_All_Locations'] = winter_df.mean(axis=1)
+# Compute and plot max winter temperatures
+winter_df_max = compute_and_plot_winter_temperatures(daily_data, statistic='max', time_interval=(1760, 1800))
+
+# Compute and plot min winter temperatures
+winter_df_min = compute_and_plot_winter_temperatures(daily_data, statistic='min', time_interval=(1760, 1800))
 
 # Identify the years where the mean winter temperature is above 2°C
 years_above_2 = winter_df[winter_df['Mean_All_Locations'] > 2].index.tolist()
