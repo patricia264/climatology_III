@@ -3,15 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 class DataSelection:
-    def __init__(self, folder_path):
+    def __init__(self):
         """
         Initialize the DataSelection class with a folder path.
 
         Parameters:
             folder_path (str): Path to the folder containing the TSV files.
         """
-        self.folder_path = folder_path
-        self.cleaned_df = None  # Placeholder for the processed DataFrame
+        self.folder_path = None
+        self.cleaned_df = None
 
     def read_data(self):
         """
@@ -51,52 +51,52 @@ class DataSelection:
 
         # Remove unwanted columns
         drop_cols = ['Hour', 'Minute', 'Period', 'Meta']
-        self.cleaned_df = combined_df.drop(columns=drop_cols, errors='ignore')
-        return self.cleaned_df
+        cleaned_df = combined_df.drop(columns=drop_cols, errors='ignore')
+        # Filter for winter months
+        djf = [12, 1, 2]
+        filtered_df = cleaned_df[cleaned_df['Month'].isin(djf)]
+        # create new column which combines year, month, day
+        filtered_df = filtered_df.copy()
+        filtered_df['date'] = pd.to_datetime(filtered_df[['Year', 'Month', 'Day']])
+        # group by date apply the mean
+        grouped_df = filtered_df.groupby('date', as_index=False)['Value'].mean()
 
-    def plot_values_by_source(self):
+        return grouped_df
+
+    def read_temp_locations(self, base_folder_path, locations):
         """
-        Plots values over time grouped by source files.
-
-        Requires:
-            The `read_data` method must be called first to populate `self.cleaned_df`.
+        Read and process data from multiple locations.
+        Parameters:
+            base_folder_path (str): Base path to the data folders.
+            locations (list): List of location names.
+        Returns:
+            pd.DataFrame: A combined DataFrame with data from all locations.
         """
-        if self.cleaned_df is None:
-            raise ValueError("No data to plot. Please call read_data() first.")
+        # Initialize an empty list to store DataFrames
+        all_locations = []
 
-        # Group data by 'source_file'
-        grouped = self.cleaned_df.groupby('source_file')
+        # Loop through each location and process the data
+        for location in locations:
+            folder_path_daily = f'{base_folder_path}/{location}/1_daily/'
+            print(f'Processing data in folder: {folder_path_daily}')
 
-        # Initialize the plot
-        plt.figure(figsize=(20, 6))
+            # Initialize DataSelection for the specific location
+            self.folder_path = folder_path_daily
 
-        # Plot data for each source file
-        for source, data in grouped:
-            # Ensure data is sorted by year for consistent plotting
-            data = data.sort_values('Year')
+            # Read the data
+            cleaned_df_daily = self.read_data()
 
-            # Plot 'Year' vs 'Value' for the current source file
-            plt.plot(data['Year'], data['Value'], label=source)
+            # Add a new column for the location
+            cleaned_df_daily['location'] = location
 
-        # Add labels, title, and legend
-        plt.xlabel('Year')
-        plt.ylabel('Value')
-        plt.title('Values Over Time by Source File')
-        plt.legend(title='Source File', loc='upper left', bbox_to_anchor=(1.05, 1))
-        plt.grid(True)
-        plt.tight_layout(rect=[0, 0, 0.95, 1])
+            # Append the DataFrame to the list
+            all_locations.append(cleaned_df_daily)
 
-        # Show the plot
-        plt.show()
+        # Concatenate all the DataFrames into one
+        final_dataframe = pd.concat(all_locations, ignore_index=True)
+        return final_dataframe
 
-# Example Usage
-if __name__ == "__main__":
-    # Initialize the DataSelection class
-    folder_path = '../data/EarlyInstrumentalTemperature/Basel/1_daily/'
-    data_selector = DataSelection(folder_path)
 
-    # Read and process the data
-    cleaned_df = data_selector.read_data()
 
-    # Plot the data
-    data_selector.plot_values_by_source()
+
+
