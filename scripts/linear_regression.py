@@ -11,7 +11,7 @@ class LinearRegression:
         """
         self.model = SklearnLinearRegression()
 
-    def apply_regression(self, dataset1, dataset2):
+    def apply_regression(self, dataset1, dataset2, reference_start, reference_end):
         """
         Combine two datasets and apply linear regression.
 
@@ -26,7 +26,7 @@ class LinearRegression:
         combined_data = pd.merge(dataset1, dataset2, on='date', how='inner')
 
         # Ensure the date column is of datetime type
-        combined_data['date'] = pd.to_datetime(combined_data['date'])
+        combined_data['date'] = pd.to_datetime(combined_data['date'], format='%Y-%m-%d')
 
         # Drop rows with NaN in the target
         combined_data = combined_data.dropna(subset=['Value'])
@@ -34,31 +34,44 @@ class LinearRegression:
         # Feature engineering: Encode 'location' column to numerical
         combined_data = pd.get_dummies(combined_data, columns=['location'], drop_first=True)
 
-        print(combined_data)
+        # Split data into reference period and non-reference period
+        reference_mask = (combined_data['date'] >= reference_start) & (combined_data['date'] <= reference_end)
 
-        # Define target (temperature)
-        y = combined_data['Value']
+        ## Features reference period: weather types and locations
+        X_reference = combined_data[reference_mask]
+        print(X_reference)
+        X_ref = X_reference.drop(columns=['Value', 'date', 'prob'])
 
-        # Define features: Use weather type and location columns only
-        X = combined_data.drop(columns=['Value', 'date', 'prob'])
+        ## Target (temperature) reference period
+        y_reference = combined_data[reference_mask]
+        y_ref = y_reference['Value']
 
-        # Split data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        ## Features other period: weather types and locations
+        X_other = combined_data[~reference_mask]
+        X = X_other.drop(columns=['Value', 'date', 'prob'])
 
-        # Fit the linear regression model
-        self.model.fit(X_train, y_train)
+        ## Target (temperature) other period
+        y_other = combined_data[~reference_mask]
+        y = y_other['Value']
 
-        # Make predictions on the test set
-        y_pred = self.model.predict(X_test)
+        # Train the regression model on the reference period
+        self.model.fit(X_ref, y_ref)
 
-        # Calculate the mean squared error
-        mse = mean_squared_error(y_test, y_pred)
+        # Apply the model to the other period
+        y_pred = self.model.predict(X)
+        mse = mean_squared_error(y, y_pred)
 
-        # Return the model coefficients and MSE
+        # Calculate MSE for reference period
+        #y_reference_pred = self.model.predict(X_reference)
+        #mse_reference = mean_squared_error(y_reference, y_reference_pred)
+
+        # Return the model coefficients, intercept, and predictions for the non-reference period
         return {
             'feature_names': X.columns,
             'coefficients': self.model.coef_,
             'intercept': self.model.intercept_,
-            'mean_squared_error': mse
+            'mean_squared_error': mse,
+            'predicted_non_reference': y_pred,
+            'actual_non_reference': y
         }
 

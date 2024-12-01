@@ -57,7 +57,7 @@ class DataSelection:
         filtered_df = cleaned_df[cleaned_df['Month'].isin(djf)]
         # create new column which combines year, month, day
         filtered_df = filtered_df.copy()
-        filtered_df['date'] = pd.to_datetime(filtered_df[['Year', 'Month', 'Day']])
+        filtered_df['date'] = pd.to_datetime(filtered_df[['Year', 'Month', 'Day']], format='%Y-%m-%d')
         # group by date apply the mean
         grouped_df = filtered_df.groupby('date', as_index=False)['Value'].mean()
 
@@ -94,9 +94,5 @@ class DataSelection:
 
         # Concatenate all the DataFrames into one
         final_dataframe = pd.concat(all_locations, ignore_index=True)
+
         return final_dataframe
-
-
-
-
-
