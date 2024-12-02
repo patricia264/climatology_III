@@ -261,8 +261,7 @@ plt.show()
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-def analyze_weather_type_temperature(daily_data, weather_data, months_of_interest, period_name):
+def analyze_weather_type_temperature(daily_data, weather_data, months_of_interest, period_name, years_of_interest=None):
     """
     Analyze the relationship between weather types and temperatures across Switzerland.
 
@@ -271,12 +270,17 @@ def analyze_weather_type_temperature(daily_data, weather_data, months_of_interes
         weather_data (DataFrame): DataFrame containing weather types with date information.
         months_of_interest (list): List of months (integers) to include in the analysis (e.g., [11, 12, 1, 2, 3, 4]).
         period_name (str): Description of the period for use in plot titles (e.g., 'Winter', 'Extended Winter').
+        years_of_interest (list): Optional list of years to include in the analysis (e.g., [1796, 1797, 1798]).
 
     Returns:
         None. Displays plots of the results.
     """
     # Filter weather data to include only the months of interest
     weather_filtered = weather_data[weather_data['date'].dt.month.isin(months_of_interest)]
+
+    # Filter by years if specified
+    if years_of_interest:
+        weather_filtered = weather_filtered[weather_filtered['date'].dt.year.isin(years_of_interest)]
 
     # Combine temperatures across all locations into one DataFrame
     temperature_data = pd.concat(
@@ -286,7 +290,7 @@ def analyze_weather_type_temperature(daily_data, weather_data, months_of_interes
         ],
         axis=1
     )
-    temperature_data = temperature_data.loc[:, ~temperature_data.columns.duplicated()]
+    temperature_data = temperature_data.loc[:, ~temperature_data.columns.duplicated()]  # Remove duplicate columns
 
     # Merge with weather types on the date
     temperature_data['Date'] = pd.to_datetime(temperature_data['Date'])
@@ -302,7 +306,8 @@ def analyze_weather_type_temperature(daily_data, weather_data, months_of_interes
     # Plot the mean temperatures by weather type
     plt.figure(figsize=(10, 6))
     mean_temps_by_weather_type.plot(kind='bar', color='skyblue', alpha=0.8)
-    plt.title(f'Mean Temperatures by Weather Type ({period_name})')
+    years_str = f" (Years: {', '.join(map(str, years_of_interest))})" if years_of_interest else ""
+    plt.title(f'Mean Temperatures by Weather Type ({period_name}{years_str})')
     plt.xlabel('Weather Type')
     plt.ylabel('Mean Temperature (°C)')
     plt.xticks(ticks=range(0, 9), labels=range(1, 10), rotation=0)  # Ensures correct labels
@@ -315,21 +320,25 @@ def analyze_weather_type_temperature(daily_data, weather_data, months_of_interes
     freq_weather_types = freq_weather_types.reindex(range(1, 10), fill_value=0)
 
     # Print results
-    print(f"Mean Temperatures by Weather Type ({period_name}):")
+    print(f"Mean Temperatures by Weather Type ({period_name}{years_str}):")
     print(mean_temps_by_weather_type)
-    print(f"\nFrequency of Weather Types ({period_name}) (%):")
+    print(f"\nFrequency of Weather Types ({period_name}{years_str}) (%):")
     print(freq_weather_types)
+    return mean_temps_by_weather_type
 
 
 # Example usage
 months_of_interest_djf = [12, 1, 2]  # Meteorological winter
 months_of_interest_boreal = [11, 12, 1, 2, 3, 4]  # Extended boreal winter
 
-print("DJF Results:")
-analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_djf, "Winter")
+# Analyze DJF for all years
+print("DJF Results (All Years):")
+mean_temps_by_wt_all = analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_djf, "Winter")
 
-print("\nBoreal Winter Results:")
-analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_boreal, "Extended Winter")
+# Analyze DJF for specific years
+specific_years = [1796]
+print("\nDJF Results (Specific Years):")
+mean_temps_by_wt_1796 = analyze_weather_type_temperature(daily_data, weather_types, months_of_interest_djf, "Winter", years_of_interest=specific_years)
 
 # %%
 def plot_temperature_comparison(daily_data, start_year, end_year, winter_start, winter_end):
@@ -497,11 +506,16 @@ winter_df_max = compute_and_plot_winter_temperatures(daily_data, statistic='max'
 winter_df_min = compute_and_plot_winter_temperatures(daily_data, statistic='min', time_interval=(1760, 1800))
 
 # Identify the years where the mean winter temperature is above 2°C
-years_above_2 = winter_df[winter_df['Mean_All_Locations'] > 2].index.tolist()
+# Add a new column for the mean of all locations
+winter_df_mean['Mean_All_Locations'] = winter_df_mean.mean(axis=1)
+
+# Identify the years where the mean winter temperature is above 2°C
+years_above_2 = winter_df_mean[winter_df_mean['Mean_All_Locations'] > 2].index.tolist()
 
 # Print the years with mean temperatures above 2°C
 print("Years with mean winter temperature above 2°C:")
 print(years_above_2)
+
 
 # %%
 import pandas as pd
@@ -585,6 +599,129 @@ def plot_weather_type_frequency_analysis(weather_types, years_above_2, months=[1
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.show()
+    return clim_freq_analysis_df
 
 # Example usage (assuming you have your weather_types DataFrame and the years_above_2 list)
-plot_weather_type_frequency_analysis(weather_types, years_above_2)
+clim_freq_analysis = plot_weather_type_frequency_analysis(weather_types, years_above_2)
+
+# %%
+import pandas as pd
+
+def compute_mean_temp_by_weather_type(daily_data, weather_types):
+    """
+    Compute the mean temperature by weather type for each winter year (DJF).
+
+    Parameters:
+        daily_data (dict): Dictionary of DataFrames containing daily temperature data for locations.
+                           Each DataFrame should have columns 'Date' (datetime) and 'Ta_mean' (temperature).
+        weather_types (DataFrame): DataFrame containing weather types and their corresponding dates.
+                                   It should have columns 'date' (datetime) and 'WT' (weather type).
+
+    Returns:
+        DataFrame: A DataFrame with winter years as rows, weather types (1-9) as columns,
+                   and mean temperatures as values.
+    """
+    # Combine daily temperature data from all locations into one DataFrame
+    combined_temp = pd.concat(
+        [
+            location_data[['Date', 'Ta_mean']].rename(columns={'Ta_mean': location_name})
+            for location_name, location_data in daily_data.items()
+        ],
+        axis=1
+    )
+    combined_temp = combined_temp.loc[:, ~combined_temp.columns.duplicated()]  # Remove duplicates
+
+    # Calculate the mean temperature across all locations for each date
+    combined_temp['Mean_Temp'] = combined_temp[daily_data.keys()].mean(axis=1)
+
+    # Ensure date columns are datetime objects
+    combined_temp['Date'] = pd.to_datetime(combined_temp['Date'])
+    weather_types['date'] = pd.to_datetime(weather_types['date'])
+
+    # Merge weather types with combined temperatures
+    merged_data = weather_types.merge(combined_temp, left_on='date', right_on='Date')
+
+    # Add a 'winter_year' column (e.g., Dec 1795, Jan-Feb 1796 -> winter_year = 1796)
+    merged_data['winter_year'] = merged_data['date'].apply(
+        lambda x: x.year if x.month != 12 else x.year + 1
+    )
+
+    # Filter for DJF months
+    merged_data = merged_data[merged_data['date'].dt.month.isin([12, 1, 2])]
+
+    # Group by winter year and weather type, then calculate the mean temperature
+    mean_temps_by_weather_type = (
+        merged_data.groupby(['winter_year', 'WT'])['Mean_Temp']
+        .mean()
+        .unstack(fill_value=0)  # Create a pivot table with weather types as columns
+    )
+
+    return mean_temps_by_weather_type
+
+mean_temp_by_winter = compute_mean_temp_by_weather_type(daily_data, weather_types)
+print(mean_temp_by_winter)
+
+# %%
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+from matplotlib import cm
+import numpy as np
+
+def plot_weather_type_pie_chart(mean_temp_by_weather_type, clim_freq_analysis, years):
+    """
+    Create a pie chart for the given year(s) based on weather type frequency and temperature.
+
+    Parameters:
+        mean_temp_by_weather_type (DataFrame): DataFrame with winter years as rows,
+                                               weather types (columns), and mean temperatures as values.
+        clim_freq_analysis (DataFrame): DataFrame with winter years as rows,
+                                         weather types (columns), and frequencies as values.
+        years (int or list of int): Year or list of years to create the pie chart for.
+    """
+    # Ensure `years` is a list for consistent processing
+    if isinstance(years, int):
+        years = [years]
+
+    # Filter data for the specified years and calculate averages if multiple years
+    freq_data = clim_freq_analysis.loc[years].mean()
+    temp_data = mean_temp_by_weather_type.loc[years].mean()
+
+    # Ensure frequency and temperature data align with weather types
+    weather_types = freq_data.index
+    frequencies = freq_data.values
+    temperatures = temp_data.values
+
+    # Normalize temperature data for coloring within the fixed range [-10, 10]
+    fixed_norm = mcolors.Normalize(vmin=-10, vmax=10)
+    colors = plt.cm.coolwarm(fixed_norm(temperatures))
+
+    # Create the pie chart
+    fig, ax = plt.subplots(figsize=(8, 8))
+    wedges, texts, autotexts = ax.pie(
+        frequencies,
+        labels=weather_types,
+        autopct='%1.1f%%',
+        colors=colors,
+        startangle=90,
+        wedgeprops=dict(edgecolor="k", linewidth=0.5),
+    )
+
+    # Style the chart
+    plt.setp(autotexts, size=10, weight="bold", color="black")
+    ax.set_title(f"Weather Type Distribution: {' & '.join(map(str, years))}", fontsize=14, weight='bold')
+
+    # Add color bar for temperature scale
+    sm = plt.cm.ScalarMappable(cmap='coolwarm', norm=plt.Normalize(temperatures.min(), temperatures.max()))
+    sm.set_array([])
+    cbar = plt.colorbar(sm, ax=ax, orientation='vertical', pad=0.1)
+    cbar.set_label('Mean Temperature (°C)', fontsize=12)
+
+    # Show the chart
+    plt.tight_layout()
+    plt.show()
+
+# For a single year
+plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, 1796)
+
+# For multiple years
+plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, [1795, 1796, 1797])
