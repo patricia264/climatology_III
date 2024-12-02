@@ -33,7 +33,8 @@ if __name__ == "__main__":
     reference_end = pd.to_datetime('1820-12-31', format='%Y-%m-%d')
 
     # Apply regression
-    results = lr.apply_regression(daily_temperature_data, weather_types, reference_start, reference_end)
+    results = lr.apply_regression(daily_temperature_data, weather_types, reference_start,
+                                  reference_end, combine_locations=True)
 
     # Printing coefficients with feature names
     print("Coefficients:")

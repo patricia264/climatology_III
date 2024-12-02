@@ -11,7 +11,7 @@ class LinearRegression:
         """
         self.model = SklearnLinearRegression()
 
-    def apply_regression(self, dataset1, dataset2, reference_start, reference_end):
+    def apply_regression(self, dataset1, dataset2, reference_start, reference_end, combine_locations = False):
         """
         Combine two datasets and apply linear regression.
 
@@ -31,8 +31,14 @@ class LinearRegression:
         # Drop rows with NaN in the target
         combined_data = combined_data.dropna(subset=['Value'])
 
-        # Feature engineering: Encode 'location' column to numerical
-        combined_data = pd.get_dummies(combined_data, columns=['location'], drop_first=True)
+        # combine all locations and take the mean daily temperature
+        if combine_locations == True:
+            combined_data['mean_daily_temp'] = combined_data.groupby('date')['Value'].transform('mean')
+            combined_data = combined_data.drop(columns=['location', 'Value'])
+            combined_data.rename(columns={'mean_daily_temp': 'Value'}, inplace=True)
+        else:
+            # Feature engineering: Encode 'location' column to numerical
+            combined_data = pd.get_dummies(combined_data, columns=['location'], drop_first=True)
 
         # Split data into reference period and non-reference period
         reference_mask = (combined_data['date'] >= reference_start) & (combined_data['date'] <= reference_end)
