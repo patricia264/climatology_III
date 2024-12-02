@@ -29,8 +29,8 @@ if __name__ == "__main__":
     lr = LinearRegression()
 
     # Define reference period
-    reference_start = pd.to_datetime('1790-01-01', format='%Y-%m-%d')
-    reference_end = pd.to_datetime('1820-12-31', format='%Y-%m-%d')
+    reference_start = pd.to_datetime('1760-01-01', format='%Y-%m-%d')
+    reference_end = pd.to_datetime('1790-12-31', format='%Y-%m-%d')
 
     # Apply regression
     results = lr.apply_regression(daily_temperature_data, weather_types, reference_start,

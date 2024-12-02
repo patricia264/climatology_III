@@ -2,7 +2,8 @@ from sklearn.linear_model import LinearRegression as SklearnLinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import pandas as pd
-
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import cross_val_score, KFold
 
 class LinearRegression:
     def __init__(self):
@@ -47,6 +48,9 @@ class LinearRegression:
         X_reference = combined_data[reference_mask]
         print(X_reference)
         X_ref = X_reference.drop(columns=['Value', 'date', 'prob'])
+        # Scale reference period features
+        scaler = StandardScaler()
+        X_ref_scaled = scaler.fit_transform(X_ref)
 
         ## Target (temperature) reference period
         y_reference = combined_data[reference_mask]
@@ -55,16 +59,18 @@ class LinearRegression:
         ## Features other period: weather types and locations
         X_other = combined_data[~reference_mask]
         X = X_other.drop(columns=['Value', 'date', 'prob'])
+        # Scale other period features
+        X_scaled = scaler.transform(X)
 
         ## Target (temperature) other period
         y_other = combined_data[~reference_mask]
         y = y_other['Value']
 
         # Train the regression model on the reference period
-        self.model.fit(X_ref, y_ref)
+        self.model.fit(X_ref_scaled, y_ref)
 
         # Apply the model to the other period
-        y_pred = self.model.predict(X)
+        y_pred = self.model.predict(X_scaled)
         mse = mean_squared_error(y, y_pred)
 
         # Calculate MSE for reference period
