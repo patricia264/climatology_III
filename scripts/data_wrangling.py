@@ -96,3 +96,26 @@ class DataSelection:
         final_dataframe = pd.concat(all_locations, ignore_index=True)
 
         return final_dataframe
+
+    def process_weather_data(self, file_path, weather_types_to_filter):
+        """
+        Process a weather data CSV file.
+
+        Args:
+            file_path (str): Path to the CSV file.
+            weather_types_to_filter (list): List of weather types to filter.
+
+        Returns:
+            pd.DataFrame: Filtered DataFrame with processed weather data.
+        """
+        # Load the dataset
+        weather_types = pd.read_csv(file_path)
+
+        # Convert the first column to DateTime format and rename it to 'date'
+        weather_types.rename(columns={weather_types.columns[0]: 'date'}, inplace=True)
+        weather_types['date'] = pd.to_datetime(weather_types['date'], format='%Y-%m-%d')
+
+        # Filter the dataset based on specified weather types
+        filtered_weather_types = weather_types[weather_types['WT'].isin(weather_types_to_filter)]
+
+        return filtered_weather_types

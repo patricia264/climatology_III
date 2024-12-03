@@ -14,16 +14,9 @@ if __name__ == "__main__":
 
     daily_temperature_data = data_selector.read_temp_locations(base_folder_path, locations)
 
-    # Display the combined DataFrame
-    #print(daily_temperature_data)
-
     file_path = '../data/CAP9_reconstructions_1728-2020.csv'
-    weather_types = pd.read_csv(file_path)
-    # Convert the first column to DateTime format and rename it to 'date'
-    weather_types.rename(columns={weather_types.columns[0]: 'date'}, inplace=True)
-    weather_types['date'] = pd.to_datetime(weather_types['date'], format='%Y-%m-%d')
-
-    #print(weather_types)
+    weather_types_to_filter = [3,5]
+    weather_type_data = data_selector.process_weather_data(file_path, weather_types_to_filter)
 
     # Initialize the LinearRegression class
     lr = LinearRegression()
@@ -33,7 +26,7 @@ if __name__ == "__main__":
     reference_end = pd.to_datetime('1790-12-31', format='%Y-%m-%d')
 
     # Apply regression
-    results = lr.apply_regression(daily_temperature_data, weather_types, reference_start,
+    results = lr.apply_regression(daily_temperature_data, weather_type_data, reference_start,
                                   reference_end, combine_locations=True)
 
     # Printing coefficients with feature names

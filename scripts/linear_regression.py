@@ -4,6 +4,7 @@ from sklearn.metrics import mean_squared_error
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, KFold
+import numpy as np
 
 class LinearRegression:
     def __init__(self):
@@ -11,6 +12,8 @@ class LinearRegression:
         Initialize the LinearRegression class.
         """
         self.model = SklearnLinearRegression()
+        self.scaler = StandardScaler()
+
 
     def apply_regression(self, dataset1, dataset2, reference_start, reference_end, combine_locations = False):
         """
@@ -49,22 +52,27 @@ class LinearRegression:
         print(X_reference)
         X_ref = X_reference.drop(columns=['Value', 'date', 'prob'])
         # Scale reference period features
-        scaler = StandardScaler()
-        X_ref_scaled = scaler.fit_transform(X_ref)
+        X_ref_scaled = self.scaler.fit_transform(X_ref)
 
         ## Target (temperature) reference period
         y_reference = combined_data[reference_mask]
         y_ref = y_reference['Value']
+        print("Number of rows reference: " , y_ref.shape[0])
 
         ## Features other period: weather types and locations
         X_other = combined_data[~reference_mask]
         X = X_other.drop(columns=['Value', 'date', 'prob'])
         # Scale other period features
-        X_scaled = scaler.transform(X)
+        X_scaled = self.scaler.transform(X)
 
         ## Target (temperature) other period
         y_other = combined_data[~reference_mask]
         y = y_other['Value']
+        print("Number of rows other: " , y.shape[0])
+        variance = np.var(y)
+        print("Variance of the target variable:", variance)
+        print("Min and max temp:", y.min(), y.max())
+
 
         # Train the regression model on the reference period
         self.model.fit(X_ref_scaled, y_ref)
