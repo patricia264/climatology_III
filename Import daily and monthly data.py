@@ -692,7 +692,7 @@ def plot_weather_type_pie_chart(mean_temp_by_weather_type, clim_freq_analysis, y
     temperatures = temp_data.values
 
     # Normalize temperature data for coloring within the fixed range [-10, 10]
-    fixed_norm = mcolors.Normalize(vmin=-10, vmax=10)
+    fixed_norm = mcolors.Normalize(vmin=-2, vmax=4)
     colors = plt.cm.coolwarm(fixed_norm(temperatures))
 
     # Create the pie chart
@@ -708,10 +708,12 @@ def plot_weather_type_pie_chart(mean_temp_by_weather_type, clim_freq_analysis, y
 
     # Style the chart
     plt.setp(autotexts, size=10, weight="bold", color="black")
-    ax.set_title(f"Weather Type Distribution: {' & '.join(map(str, years))}", fontsize=14, weight='bold')
-
+    if len(years)==1:
+        ax.set_title(f"Weather Type Distribution: {' & '.join(map(str, years))}", fontsize=14, weight='bold')
+    else:
+        ax.set_title(f"Weather Type Distribution: from {min(years)} to {max(years)}", fontsize=14, weight='bold')
     # Add color bar for temperature scale
-    sm = plt.cm.ScalarMappable(cmap='coolwarm', norm=plt.Normalize(temperatures.min(), temperatures.max()))
+    sm = plt.cm.ScalarMappable(cmap='coolwarm', norm=plt.Normalize(vmin=-2, vmax=4))
     sm.set_array([])
     cbar = plt.colorbar(sm, ax=ax, orientation='vertical', pad=0.1)
     cbar.set_label('Mean Temperature (°C)', fontsize=12)
@@ -722,6 +724,9 @@ def plot_weather_type_pie_chart(mean_temp_by_weather_type, clim_freq_analysis, y
 
 # For a single year
 plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, 1796)
+plot_weather_type_pie_chart(mean_temp_by_winter,clim_freq_analysis,1764)
 
 # For multiple years
-plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, [1795, 1796, 1797])
+#plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, [1795, 1796, 1797])
+clim_reference_yrs = np.arange(1760,1790)
+plot_weather_type_pie_chart(mean_temp_by_winter, clim_freq_analysis, clim_reference_yrs)
