@@ -52,12 +52,15 @@ class DataSelection:
         # Remove unwanted columns
         drop_cols = ['Hour', 'Minute', 'Period', 'Meta']
         cleaned_df = combined_df.drop(columns=drop_cols, errors='ignore')
+
         # Filter for winter months
         djf = [12, 1, 2]
         filtered_df = cleaned_df[cleaned_df['Month'].isin(djf)]
+
         # create new column which combines year, month, day
         filtered_df = filtered_df.copy()
         filtered_df['date'] = pd.to_datetime(filtered_df[['Year', 'Month', 'Day']], format='%Y-%m-%d')
+
         # group by date apply the mean
         grouped_df = filtered_df.groupby('date', as_index=False)['Value'].mean()
 
@@ -95,9 +98,22 @@ class DataSelection:
         # Concatenate all the DataFrames into one
         final_dataframe = pd.concat(all_locations, ignore_index=True)
 
-        return final_dataframe
+        # Combine all locations together and take the mean
+        final_dataframe['mean_daily_temp'] = final_dataframe.groupby('date')['Value'].transform('mean')
+        final_dataframe = final_dataframe.drop(columns=['location', 'Value'])
+        final_dataframe.rename(columns={'mean_daily_temp': 'Value'}, inplace=True)
 
-    def process_weather_data(self, file_path, weather_types_to_filter):
+        # Combine the djf months and take the mean
+        temp_djf = final_dataframe.copy()
+        temp_djf.loc[:, 'djf_year'] = temp_djf['date'].apply(
+            lambda x: x.year if x.month != 12 else x.year + 1
+        )
+
+        mean_temp_djf = temp_djf.groupby(['djf_year'], as_index=False)['Value'].mean()
+
+        return mean_temp_djf
+
+    def process_weather_data(self, file_path):
         """
         Process a weather data CSV file.
 
@@ -106,7 +122,7 @@ class DataSelection:
             weather_types_to_filter (list): List of weather types to filter.
 
         Returns:
-            pd.DataFrame: Filtered DataFrame with processed weather data.
+            pd.DataFrame: Filtered DataFrame with frequency of each weather type over the djf period.
         """
         # Load the dataset
         weather_types = pd.read_csv(file_path)
@@ -115,7 +131,27 @@ class DataSelection:
         weather_types.rename(columns={weather_types.columns[0]: 'date'}, inplace=True)
         weather_types['date'] = pd.to_datetime(weather_types['date'], format='%Y-%m-%d')
 
-        # Filter the dataset based on specified weather types
-        filtered_weather_types = weather_types[weather_types['WT'].isin(weather_types_to_filter)]
+        # Filter for winter months
+        djf = [12, 1, 2]
+        wt_djf = weather_types[weather_types['date'].dt.month.isin(djf)]
 
-        return filtered_weather_types
+        # define djf year
+        wt_djf = wt_djf.copy()
+        wt_djf.loc[:, 'djf_year'] = wt_djf['date'].apply(
+            lambda x: x.year if x.month != 12 else x.year + 1
+        )
+
+        # Frequency of each weather type per djf-year
+        wt_frequency = (
+            wt_djf.groupby(['djf_year', 'WT'])
+            .apply(lambda x: x.assign(counts=len(x)))
+            .reset_index(drop=True)
+        )
+
+        print("wt frequency", wt_frequency)
+
+        wt_pivot = wt_frequency.pivot_table(index='djf_year', columns='WT', values='counts', aggfunc='sum',
+                                  fill_value=0).reset_index()
+        wt_pivot.columns.name = None  # Remove the name for columns
+
+        return wt_pivot

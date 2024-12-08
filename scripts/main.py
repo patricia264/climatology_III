@@ -12,27 +12,28 @@ if __name__ == "__main__":
     # Initialize the DataSelection class
     data_selector = DataSelection()
 
-    daily_temperature_data = data_selector.read_temp_locations(base_folder_path, locations)
+    # get temperature data
+    djf_temp_data = data_selector.read_temp_locations(base_folder_path, locations)
 
+    # get weather data
     file_path = '../data/CAP9_reconstructions_1728-2020.csv'
-    weather_types_to_filter = [3,5]
-    weather_type_data = data_selector.process_weather_data(file_path, weather_types_to_filter)
+    weather_type_data = data_selector.process_weather_data(file_path)
+    print("Weather data: ", weather_type_data)
+
+    # read in CO2 data
+    file_path = '../data/CO2_data.txt'
+    co2_data = pd.read_csv(file_path, delimiter="\t")
+    co2_data = co2_data[['YR', 'CO2[ppm]']]
+    #print("CO2 data: ", co2_data)
 
     # Initialize the LinearRegression class
     lr = LinearRegression()
 
-    # Define reference period
-    reference_start = pd.to_datetime('1760-01-01', format='%Y-%m-%d')
-    reference_end = pd.to_datetime('1790-12-31', format='%Y-%m-%d')
+    best_period = lr.find_best_reference_period(djf_temp_data, weather_type_data, co2_data)
+    print("Best Reference Start:", best_period['best_start'])
+    print("Best Reference End:", best_period['best_end'])
+    print("Lowest MSE:", best_period['lowest_mse'])
+    print("Coefficients:", best_period['coefficients'])
+    print("p-values:", best_period['p_values'])
+    print("r-squared:", best_period['r_squared'])
 
-    # Apply regression
-    results = lr.apply_regression(daily_temperature_data, weather_type_data, reference_start,
-                                  reference_end, combine_locations=True)
-
-    # Printing coefficients with feature names
-    print("Coefficients:")
-    for name, coef in zip(results['feature_names'], results['coefficients']):
-        print(f"{name}: {coef}")
-
-    print("Intercept:", results['intercept'])
-    print("Mean Squared Error:", results['mean_squared_error'])
