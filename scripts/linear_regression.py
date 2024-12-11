@@ -1,13 +1,12 @@
-from sklearn.linear_model import LinearRegression as SklearnLinearRegression
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, KFold
+from sklearn import datasets, linear_model
 import numpy as np
 import statsmodels.api as sm
+import seaborn as sns
 import matplotlib.pyplot as plt
-
 
 class LinearRegression:
     def __init__(self):
@@ -17,7 +16,7 @@ class LinearRegression:
         self.model = None
         self.scaler = StandardScaler()
 
-    def calibrated_regression(self, temp_data, wt_data, co2_data, reference_start, reference_end, target_year=1796):
+    def calibrated_regression(self, combined_data, reference_start, reference_end, target_year=1796):
         """
         Perform a calibrated regression to estimate winter temperatures for a specific year.
 
@@ -32,15 +31,6 @@ class LinearRegression:
         Returns:
             dict: Regression coefficients, p-values, R-squared, and predicted temperature for target year.
         """
-        # Merge datasets
-        combined_data = pd.merge(temp_data, wt_data, on='djf_year', how='inner')
-        # Merge co2_data, using 'djf_year' from combined_data and 'YR' from dataset3
-        combined_data = pd.merge(combined_data, co2_data, left_on='djf_year', right_on='YR', how='inner')
-        # drop the extra 'YR' column from the final result
-        combined_data.drop(columns=['YR'], inplace=True)
-
-        # Drop rows with NaN in the target
-        combined_data = combined_data.dropna(subset=['Value'])
 
         # Define reference period mask
         reference_mask = (combined_data['djf_year'] >= reference_start) & (combined_data['djf_year'] <= reference_end)
@@ -82,10 +72,11 @@ class LinearRegression:
             'coefficients': self.model.params,
             'p_values': self.model.pvalues,
             'r_squared': self.model.rsquared,
-            'predicted_temperature': y_predicted
+            'predicted_temperature': y_predicted,
+            'reference_temperature': y_ref,
         }
 
-    def find_best_reference_period(self, temp_data, wt_data, co2_data):
+    def find_best_reference_period(self, combined_data):
         start_year = 1760
         end_year = 1790
         max_end_year = 1860
@@ -94,16 +85,26 @@ class LinearRegression:
         best_end = None
         lowest_mse = float('inf')  # Start with a very high value
 
+        # Initialize lists to store reference periods and MSEs
+        evaluated_reference_periods = []
+        mse_results = []
+
         while end_year <= max_end_year:
             # Format the dates as strings
             reference_start = start_year
             reference_end = end_year
 
             # Apply regression and get results
-            results = self.calibrated_regression(temp_data, wt_data, co2_data, reference_start, reference_end)
+            results = self.calibrated_regression(combined_data, reference_start, reference_end)
 
-            # Extract MSE and compare with current best
+            # Extract MSE
             mse = results['mean_squared_error']
+
+            # Collect the current period and its MSE
+            evaluated_reference_periods.append((reference_start, reference_end))
+            mse_results.append(mse)
+
+            # Check for the best MSE
             if mse < lowest_mse:
                 lowest_mse = mse
                 best_start = reference_start
@@ -111,18 +112,26 @@ class LinearRegression:
                 coefficients = results['coefficients']
                 p_values = results['p_values']
                 r_squared = results['r_squared']
+                y_predicted = results['predicted_temperature']
+                y_ref = results['reference_temperature']
 
             # Increment the range by 10 years
             start_year += 10
             end_year += 10
 
+        # Add results to the return dictionary
         return {
             'best_start': best_start,
             'best_end': best_end,
             'lowest_mse': lowest_mse,
             'coefficients': coefficients,
             'p_values': p_values,
-            'r_squared': r_squared
+            'r_squared': r_squared,
+            'y_predicted': y_predicted,
+            'y_ref': y_ref,
+            'evaluated_reference_periods': evaluated_reference_periods,
+            'mse_results': mse_results
         }
+
 
 

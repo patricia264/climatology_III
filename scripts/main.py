@@ -2,6 +2,8 @@ from data_wrangling import DataSelection
 from linear_regression import LinearRegression
 import pandas as pd
 
+from scripts.data_merging import DataHelper
+from scripts.plots import LinearRegressionPlots
 
 if __name__ == "__main__":
 
@@ -26,14 +28,29 @@ if __name__ == "__main__":
     co2_data = co2_data[['YR', 'CO2[ppm]']]
     #print("CO2 data: ", co2_data)
 
+    combined_data = DataHelper.combine_data(djf_temp_data, weather_type_data, co2_data)
+
+    print("combined data: ", combined_data)
+
     # Initialize the LinearRegression class
     lr = LinearRegression()
+    pl = LinearRegressionPlots()
 
-    best_period = lr.find_best_reference_period(djf_temp_data, weather_type_data, co2_data)
+    best_period = lr.find_best_reference_period(combined_data)
     print("Best Reference Start:", best_period['best_start'])
     print("Best Reference End:", best_period['best_end'])
     print("Lowest MSE:", best_period['lowest_mse'])
     print("Coefficients:", best_period['coefficients'])
     print("p-values:", best_period['p_values'])
     print("r-squared:", best_period['r_squared'])
+
+    pl.coefficients_bar_plot(best_period)
+    pl.predictions_reference_plot(best_period)
+    evaluated_reference_periods = best_period['evaluated_reference_periods']
+    mse_results = best_period['mse_results']
+    pl.plot_mse_across_reference_periods(evaluated_reference_periods, mse_results)
+
+    #pl.plot_residuals_for_best_period(combined_data, best_period['best_start'], best_period['best_end'])
+
+
 
