@@ -37,12 +37,34 @@ class LinearRegressionPlots:
         y_ref = results['y_ref']
         y_predicted = results['y_predicted']
 
-        plt.hist(y_ref, bins=15, alpha=0.7, label='Reference Temperatures')
-        plt.axvline(y_predicted, color='red', linestyle='--', label='Predicted Temp (1796)')
-        plt.xlabel('Temperature')
-        plt.ylabel('Frequency')
-        plt.title('Predicted Temperature vs. Reference Period')
-        plt.legend()
+        # If y_predicted is an array, ensure it's converted to a scalar (if it contains a single value)
+        if isinstance(y_predicted, np.ndarray) and y_predicted.size == 1:
+            y_predicted = y_predicted.item()  # Extract the scalar value
+
+        # Create the plot
+        plt.figure(figsize=(8, 6))
+        plt.hist(y_ref, bins=15, alpha=0.7, color='sandybrown', edgecolor='sienna',
+                 label='Reference Temperatures (1780–1810)')
+        plt.axvline(y_predicted, color='red', linestyle='--', linewidth=2,
+                    label=f'Predicted Temperature (1796): {y_predicted:.1f}°C')
+
+        # Improve axis labels and title
+        plt.xlabel('Temperature [°C]', fontsize=12)
+        plt.ylabel('Frequency', fontsize=12)
+        plt.title('Predicted Temperature vs. Reference Period', fontsize=14)
+
+        # Customize ticks
+        plt.xticks(fontsize=10)
+        plt.yticks(fontsize=10)
+
+        # Add grid for better readability
+        plt.grid(axis='y', linestyle='--', alpha=0.6)
+
+        # Add legend with improved placement
+        plt.legend(loc='upper left', fontsize=10)
+
+        # Show the plot
+        plt.tight_layout()
         plt.show()
 
     def plot_mse_across_reference_periods(self, evaluated_reference_periods, mse_results):
