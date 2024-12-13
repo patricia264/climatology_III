@@ -37,12 +37,24 @@ if __name__ == "__main__":
     pl = LinearRegressionPlots()
 
     best_period = lr.find_best_reference_period(combined_data)
-    print("Best Reference Start:", best_period['best_start'])
-    print("Best Reference End:", best_period['best_end'])
-    print("Lowest MSE:", best_period['lowest_mse'])
-    print("Coefficients:", best_period['coefficients'])
-    print("p-values:", best_period['p_values'])
-    print("r-squared:", best_period['r_squared'])
+    print(f"""
+    ---
+    ### Analysis Results
+
+    - **Best Reference Period**:  
+      - Start Year: **{best_period['best_start']}**  
+      - End Year: **{best_period['best_end']}**
+
+    - **Model Performance**:  
+      - Lowest Mean Squared Error (MSE): **{best_period['lowest_mse']:.4f}**  
+      - R-squared Value: **{best_period['r_squared']:.4f}**
+
+    - **Regression Details**:  
+      - Coefficients: **{best_period['coefficients']}**  
+      - p-values: **{best_period['p_values']}**
+
+    ---
+    """)
 
     pl.coefficients_bar_plot(best_period)
     pl.predictions_reference_plot(best_period)

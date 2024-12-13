@@ -43,21 +43,31 @@ class LinearRegressionPlots:
 
         # Create the plot
         plt.figure(figsize=(8, 6))
-        plt.hist(y_ref, bins=15, alpha=0.7, color='sandybrown', edgecolor='sienna',
-                 label='Reference Temperatures (1780–1810)')
+
+        # Calculate the histogram and normalize to percentages
+        counts, bins, bars = plt.hist(
+            y_ref, bins=15, alpha=0.7, color='sandybrown', edgecolor='sienna',
+            weights=np.ones(len(y_ref)) / len(y_ref) * 100,  # Normalize counts to percentages
+            label='Reference Temperatures (1780–1810)')
+
+        # Add a vertical line for predicted temperature
         plt.axvline(y_predicted, color='red', linestyle='--', linewidth=2,
                     label=f'Predicted Temperature (1796): {y_predicted:.1f}°C')
 
         # Improve axis labels and title
         plt.xlabel('Temperature [°C]', fontsize=12)
-        plt.ylabel('Frequency', fontsize=12)
+        plt.ylabel('Frequency [%]', fontsize=12)  # Update y-axis label
         plt.title('Predicted Temperature vs. Reference Period', fontsize=14)
+
+        # Ensure y-axis ticks are formatted as percentages
+        max_percentage = int(np.ceil(counts.max()))  # Get the maximum percentage
+        plt.yticks(range(0, max_percentage + 1, 10))  # Adjust step if needed
 
         # Customize ticks
         plt.xticks(fontsize=10)
         plt.yticks(fontsize=10)
 
-        # Add grid for better readability
+        # Remove grid lines overlapping with the bars
         plt.grid(axis='y', linestyle='--', alpha=0.6)
 
         # Add legend with improved placement
